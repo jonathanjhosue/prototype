@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions" >
+
+    <ui:composition template="/WEB-INF/templates/template3.xhtml">
+    
+    
+ 	<ui:define name="title">
+            <h:outputText value="#{bundle.ListComercioTitle}"></h:outputText>
+        </ui:define>
+    
+     <ui:define name="box1">
+      
+		<h2>Administración</h2>		
+		<ul class="list1 pad_bot1">
+			<li><a href="#">Opción 1</a></li>
+			<li><a href="#">Opción 3</a></li>
+			<li>&#160;
+				<ul>
+					<li><a href="#">SubOpción 3.1</a></li>
+					<li><a href="#">SubOpción 3.2</a></li>					
+				</ul>
+			</li>
+			<li><a href="#">Opción 4</a></li>
+
+		</ul>
+		<p:graphicImage library="design" class="img" name="images/img1.png" alt=""/>							
+	
+   </ui:define>
+   
+      <ui:define name="box2">
+   		<h2>Información de Comercios</h2>
+		<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque.</p>
+						
+   </ui:define>
+
+
+
+
+        <ui:define name="maincontent">
+            <h:form id="ComercioListForm">
+                <p:panel header="#{bundle.ListComercioTitle}">
+                    <p:dataTable id="datalist" value="#{comercioController.items}" var="item"
+                                 selectionMode="single" selection="#{comercioController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_identificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_referencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.referencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_pais}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pais}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_ciudad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciudad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_contactos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contactos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_admCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_admActualizacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admActualizacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_admUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComercioTitle_clienteId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clienteId.nombre}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{comercioController.prepareCreate}" update=":ComercioCreateForm" oncomplete="PF('ComercioCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ComercioViewForm" oncomplete="PF('ComercioViewDialog').show()" disabled="#{empty comercioController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ComercioEditForm" oncomplete="PF('ComercioEditDialog').show()" disabled="#{empty comercioController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{comercioController.destroy}" update=":growl,datalist" disabled="#{empty comercioController.selected}"/>
+                        
+                        	<h:commandLink>
+				                <p:graphicImage library="images" name="icons/excel.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xls" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/pdf.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="pdf" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}"/>
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/csv.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="csv" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/xml.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xml" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+                        
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoComisionEditDlg" widgetVar="TipoComisionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoComisionTitle}">
+            <h:form id="TipoComisionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoComisionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{tipoComisionController.selected.id}" title="#{bundle.EditTipoComisionTitle_id}" required="true" requiredMessage="#{bundle.EditTipoComisionRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{tipoComisionController.selected.fecha}" title="#{bundle.EditTipoComisionTitle_fecha}" required="true" requiredMessage="#{bundle.EditTipoComisionRequiredMessage_fecha}" showOn="button"/>
+                        
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_tipoComision}" for="tipoComision" />
+                        <p:selectOneMenu id="tipoComision" value="#{tipoComisionController.selected.tipoComision}" effect="fold" editable="true" required="true" title="#{bundle.EditTipoComisionTitle_tipoComision}" requiredMessage="#{bundle.EditTipoComisionTitle_tipoComision}">
+                            <f:selectItems value="#{applicationController.tiposComision}"
+                                           var="objItem"
+                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+                        </p:selectOneMenu>                      
+                        
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_porcentaje}" for="porcentaje" />                        
+                        <p:spinner id="porcentaje" value="#{tipoComisionController.selected.porcentaje}" stepFactor="0.1" min="0" max="100" suffix="%" maxlength="6" title="#{bundle.EditTipoComisionTitle_porcentaje}" required="true" requiredMessage="#{bundle.EditTipoComisionRequiredMessage_porcentaje}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{tipoComisionController.selected.estado}" title="#{bundle.EditTipoComisionTitle_estado}" required="true" requiredMessage="#{bundle.EditTipoComisionRequiredMessage_estado}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_comercioId}" for="comercioId" />
+                        <p:selectOneMenu id="comercioId" value="#{tipoComisionController.selected.comercioId}" required="true" requiredMessage="#{bundle.EditTipoComisionRequiredMessage_comercioId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{comercioController.itemsAvailableSelectOne}"
+                                           var="comercioIdItem"
+                                           itemValue="#{comercioIdItem}" itemLabel="#{comercioIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                        
+                        
+                         <p:outputLabel value="#{bundle.EditTipoComisionLabel_admCreacion}"  />                        
+                        <h:outputText value="#{tipoComisionController.selected.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_admActualizacion}"  />
+                        <h:outputText value="#{tipoComisionController.selected.admActualizacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        
+                        <p:outputLabel value="#{bundle.EditTipoComisionLabel_admUsuario}"  />
+                        <h:outputText value="#{tipoComisionController.selected.admUsuario}"/>         
+                        
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoComisionController.update}" value="#{bundle.Save}" update="display,:TipoComisionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoComisionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoComisionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

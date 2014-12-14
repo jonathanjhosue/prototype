@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:p="http://primefaces.org/ui">
+
+<nav>
+
+<div id="menu1">
+<p:megaMenu   orientation="#{megaMenuView.orientation}" style="margin-top:20px;" >
+ 	<p:menuitem value="Inicio" url="/index.xhtml" icon="ui-icon-home" />
+    
+ 
+    <p:submenu label="Transacciones" icon="ui-icon-document">
+ 
+        <p:column>
+            <p:submenu label="Transacciones">
+                <p:menuitem value="Transacciones" outcome="/banca/transaccion/List.xhtml" />               
+            </p:submenu>
+            <p:submenu label="Casos">              
+                <p:menuitem value="Errores" url="#" />
+                <p:menuitem value="Desconocido" url="#" />
+            </p:submenu>
+        </p:column>
+ 
+        <p:column>
+            <p:submenu label="Tipos">
+                <p:menuitem value="Ventas" url="#" />
+                <p:menuitem value="Deposito" url="#" />
+                <p:menuitem value="Retiro" url="#" />
+                <p:menuitem value="Transferencia Interna" url="#" />
+                <p:menuitem value="Transferencia Externa" url="#" />
+  				<p:menuitem value="Reembolsos" url="#" />
+            </p:submenu>
+        </p:column>       
+    </p:submenu>
+    
+    <p:submenu label="Procesos" icon="ui-icon-clock">
+ 
+        <p:column>           
+            <p:submenu label="Cierres">
+                <p:menuitem value="Cierre" outcome="/banca/cierre/List.xhtml" />
+                <p:menuitem value="Comision" outcome="/banca/comision/List.xhtml" />
+                <p:menuitem value="Otros" url="#" />
+            </p:submenu>
+        </p:column>
+        
+    </p:submenu>
+ 
+    <p:submenu label="Administración" icon="ui-icon-pencil">
+        <p:column>
+            <p:submenu label="Clientes">
+                <p:menuitem value="Cliente" outcome="/banca/cliente/List.xhtml" />
+                <p:menuitem value="Cuenta" outcome="/banca/cuenta/List.xhtml" />
+                <p:menuitem value="EstadoCuenta" outcome="/banca/estadoCuenta/List.xhtml" />
+                <p:menuitem value="Movimiento" outcome="/banca/movimiento/List.xhtml" /> 
+                <p:menuitem value="Tarjeta" outcome="/banca/tarjeta/List.xhtml" />                             
+           
+            </p:submenu>  
+        </p:column>            
+        <p:column> 
+             <p:submenu label="Comercios">
+                 <p:menuitem value="Comercio" outcome="/banca/comercio/List.xhtml" />  
+                 <p:menuitem value="TipoComision" outcome="/banca/tipoComision/List.xhtml" />
+            </p:submenu>    
+             <p:submenu label="Usuarios">    
+               <p:menuitem value="Usuario" outcome="/banca/usuario/List.xhtml" />
+              </p:submenu>  
+        </p:column>
+ 
+        <p:column>
+            <p:submenu label="Soporte">
+                <p:menuitem value="Entidad" outcome="/banca/entidad/List.xhtml" />                       
+                <p:menuitem value="TipoCambio" outcome="/banca/tipoCambio/List.xhtml" />
+                <p:menuitem value="Moneda" outcome="/banca/moneda/List.xhtml" />                
+                <p:menuitem value="TipoTransaccion" outcome="/banca/tipoTransaccion/List.xhtml" />
+            </p:submenu>
+        </p:column>        
+    </p:submenu>  
+    
+    <p:submenu label="Sistema" icon="ui-icon-contact">
+    	<p:column>
+            <p:submenu label="Enlaces">
+                <p:menuitem value="Sitio Comercios" url="/comercios/"  icon="ui-icon-cart"/>
+                <p:menuitem value="Sitio Clientes" url="/clientes/" icon="ui-icon-person"/>
+            </p:submenu>
+            <p:submenu label="Configuracion">
+            	<p:menuitem value="Log" outcome="/banca/log/List.xhtml" />
+                <p:menuitem value="Manual de Configuración" url="#" />
+                <p:menuitem value="Manual Técnico" url="#" />
+            </p:submenu>
+        </p:column>
+ 
+        <p:column>
+            <p:submenu label="Ayuda" icon="ui-icon-help">
+                <p:menuitem value="Soporte Técnico" url="#" />
+                <p:menuitem value="Documentación" url="#" />
+                <p:menuitem value="Mapa del Sitio" url="/banca/sitemap.xhtml" />
+                <p:menuitem value="Proyectos" url="/banca/projects.xhtml" />
+                <p:menuitem value="Contacto" url="/banca/contacts.xhtml" />
+                <p:menuitem value="Acerca de " url="/banca/about.xhtml" />
+            </p:submenu>
+        </p:column>
+    </p:submenu>
+ 
+    <p:menuitem value="Salir" url="/login.xhtml" icon="ui-icon-close" />
+</p:megaMenu>
+
+</div>
+</nav>
+
+</html>

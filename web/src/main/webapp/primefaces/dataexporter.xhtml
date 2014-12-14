@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml"
+      xmlns:p="http://primefaces.org/ui">
+   <ui:define name="content">
+      <h1>Welcome to JBoss!</h1>
+
+     <h:form>
+    <p:dataTable id="tbl" var="tarjeta" value="#{tarjetasController.tarjetas}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+ 
+        <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage library="images" name="icons/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="tarjetas" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage library="images" name="icons/pdf.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="tarjetas"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage library="images" name="icons/csv.png" width="24"/>
+                <p:dataExporter type="csv" target="tbl" fileName="tarjetas" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage library="images" name="icons/xml.png" width="24"/>
+                <p:dataExporter type="xml" target="tbl" fileName="tarjetas" />
+            </h:commandLink>
+        </f:facet>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Número" />
+            </f:facet>
+            <h:outputText value="#{tarjetas.numero}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Tipo Tarjeta"/>
+            </f:facet>
+            <h:outputText value="#{tarjeta.tipo_tarjeta}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Cliente" />
+            </f:facet>
+            <h:outputText value="#{tarjeta.cliente}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Número de Cuenta" />
+            </f:facet>
+            <h:outputText value="#{tarjeta.numero_cuenta}" />
+        </p:column>
+    </p:dataTable>
+ 
+    <h3>Export Page Data Only</h3>
+    <h:commandLink>
+        <p:graphicImage library="images" name="icons/excel.png" />
+        <p:dataExporter type="xls" target="tbl" fileName="tarjetas" pageOnly="true"/>
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage library="images" name="icons/pdf.png" />
+        <p:dataExporter type="pdf" target="tbl" fileName="tarjetas" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage library="images" name="icons/csv.png" />
+        <p:dataExporter type="csv" target="tbl" fileName="tarjetas" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage library="images" name="icons/xml.png" />
+        <p:dataExporter type="xml" target="tbl" fileName="tarjetas" pageOnly="true" />
+    </h:commandLink>
+</h:form>
+     
+     
+   </ui:define>
+</ui:composition>

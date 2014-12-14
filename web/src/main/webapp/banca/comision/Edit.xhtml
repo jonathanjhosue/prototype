@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions" >
+
+    <ui:composition>
+
+        <p:dialog id="ComisionEditDlg" widgetVar="ComisionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditComisionTitle}">
+            <h:form id="ComisionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{comisionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditComisionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{comisionController.selected.id}" title="#{bundle.EditComisionTitle_id}" required="true" requiredMessage="#{bundle.EditComisionRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditComisionLabel_valor}" for="valor" />
+                          <p:spinner id="valor" value="#{comisionController.selected.valor}" stepFactor="0.1" min="0" max="100" suffix="%" maxlength="3" title="#{bundle.EditComisionTitle_valor}" required="true" requiredMessage="#{bundle.EditComisionRequiredMessage_valor}"/>
+   						
+                        
+                        <p:outputLabel value="#{bundle.EditComisionLabel_detalle}" for="detalle" />
+                        <p:inputText id="detalle" value="#{comisionController.selected.detalle}" title="#{bundle.EditComisionTitle_detalle}" />
+                        <p:outputLabel value="#{bundle.EditComisionLabel_comercioId}" for="comercioId" />
+                        <p:selectOneMenu id="comercioId" value="#{comisionController.selected.comercioId}" required="true" requiredMessage="#{bundle.EditComisionRequiredMessage_comercioId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{comercioController.itemsAvailableSelectOne}"
+                                           var="comercioIdItem"
+                                           itemValue="#{comercioIdItem}"  itemLabel="#{comercioIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditComisionLabel_tipocomisionId}" for="tipocomisionId" />
+                        <p:selectOneMenu id="tipocomisionId" value="#{comisionController.selected.tipocomisionId}" required="true" requiredMessage="#{bundle.EditComisionRequiredMessage_tipocomisionId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoComisionController.itemsAvailableSelectOne}"
+                                           var="tipocomisionIdItem"
+                                           itemValue="#{tipocomisionIdItem}" itemLabel="#{tipocomisionIdItem.tipoComision} #{tipocomisionIdItem.porcentaje}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditComisionLabel_cierreId}" for="cierreId" />
+                        <p:selectOneMenu id="cierreId" value="#{comisionController.selected.cierreId}" required="true" requiredMessage="#{bundle.EditComisionRequiredMessage_cierreId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cierreController.itemsAvailableSelectOne}"
+                                           var="cierreIdItem"
+                                           itemValue="#{cierreIdItem}"  itemLabel="#{of:formatDate(cierreIdItem.fecha, 'yyyy-MM-dd HH:mm')}"/>
+                        </p:selectOneMenu>
+                        
+                       
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{comisionController.update}" value="#{bundle.Save}" update="display,:ComisionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ComisionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ComisionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<header xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:p="http://primefaces.org/ui">
+
+
+			<div id="logo_box">
+				<h1><a href="index.html" id="logo">
+				<p:graphicImage library="images" name="evertec.png" alt=""/>
+				Prototipo Migración <span>  Consulta RestFull WebService Client</span></a></h1>
+			</div>
+			<div id="menu_box">				
+			</div>
+			
+			<!-- header --> 
+		      	<ui:include src="client_menu.xhtml" />
+		   <!-- / header -->
+			
+			<div class="wrapper">
+				<div class="text1"><ui:insert name="title">Consulta Tarjetahabientes</ui:insert></div>
+				<div class="text2"><ui:insert name="subtitle">Versión 0.1</ui:insert></div>
+				<ul id="icons">
+					<li><span>Enlaces de Interés!</span></li>
+					<li><a href="#"><p:graphicImage library="design" name="images/icon1.jpg" alt=""/></a></li>
+					<li><a href="#"><p:graphicImage library="design" name="images/icon2.jpg" alt=""/></a></li>
+					<li><a href="#"><p:graphicImage library="design" name="images/icon3.jpg" alt=""/></a></li>
+				</ul>
+			</div>
+		</header>

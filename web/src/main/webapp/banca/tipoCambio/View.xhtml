@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoCambioViewDlg" widgetVar="TipoCambioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipoCambioTitle}">
+            <h:form id="TipoCambioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoCambioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_tipoCambioPK_fecha}"/>
+                        <h:outputText value="#{tipoCambioController.selected.tipoCambioPK.fecha}" title="#{bundle.ViewTipoCambioTitle_tipoCambioPK_fecha}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_id}"/>
+                        <h:outputText value="#{tipoCambioController.selected.id}" title="#{bundle.ViewTipoCambioTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_valor}"/>
+                        <h:outputText value="#{tipoCambioController.selected.valor}" title="#{bundle.ViewTipoCambioTitle_valor}"/>
+                        
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_moneda}"/>
+                        <h:outputText value="#{tipoCambioController.selected.moneda1}" title="#{bundle.ViewTipoCambioTitle_moneda1}"/>
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_moneda1}"/>
+                        <h:outputText value="#{tipoCambioController.selected.moneda1}" title="#{bundle.ViewTipoCambioTitle_moneda2}"/>
+                        
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_admCreacion}"/>          
+                        <h:outputText value="#{tipoCambioController.selected.admCreacion}" title="#{bundle.ViewTipoCambioTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoCambioLabel_admUsuario}"/>
+                        <h:outputText value="#{tipoCambioController.selected.admUsuario}" title="#{bundle.ViewTipoCambioTitle_admUsuario}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TipoCambioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

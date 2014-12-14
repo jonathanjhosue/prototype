@@ -1,0 +1,25 @@
+.col1, .col2, .col3, .cols {float:left}
+.col1 {width:304px}
+.col2 {width:632px}
+.cols {width:268px}
+
+.mainbody{
+	width:100%
+	
+}
+
+/* index */
+#page1 #icons {padding:42px 0 0 353px}
+#page1 header {}
+#page1 .marg_top {}
+/* page2 */
+/* page3 */
+/* page4 */
+/* page5 */
+#pageContacts .col1 .col2 {width:80px;letter-spacing:-1px}
+#pageContacts .col1 .col3 {width:140px}
+/* page6 */
+
+
+
+

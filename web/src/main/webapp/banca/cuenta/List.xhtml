@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions" >
+
+    <ui:composition template="/WEB-INF/templates/template2.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCuentaTitle}"></h:outputText>
+        </ui:define>
+        
+     <ui:define name="box1">
+    	<h2>Información sobre cuentas</h2>
+		<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+		<a href="#" class="button"><span><span>Read More</span></span></a>
+    
+    </ui:define>	
+
+        <ui:define name="maincontent">
+            <h:form id="CuentaListForm">
+                <p:panel header="#{bundle.ListCuentaTitle}">
+                    <p:dataTable id="datalist" value="#{cuentaController.items}" var="item"
+                                 selectionMode="single" selection="#{cuentaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.cuentaPK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_cuentaPK_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cuentaPK.numero}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_tipoCuenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoCuenta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_fechaCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_fechaActivacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaActivacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_fechaDesactivacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaDesactivacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_predeterminada}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.predeterminada}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_admCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_admActualizacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admActualizacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_admUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_clienteId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clienteId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_entidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.entidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCuentaTitle_monedaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.monedaId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuentaController.prepareCreate}" update=":CuentaCreateForm" oncomplete="PF('CuentaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CuentaViewForm" oncomplete="PF('CuentaViewDialog').show()" disabled="#{empty cuentaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CuentaEditForm" oncomplete="PF('CuentaEditDialog').show()" disabled="#{empty cuentaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cuentaController.destroy}" update=":growl,datalist" disabled="#{empty cuentaController.selected}"/>
+                        
+                        
+                        	<h:commandLink>
+				                <p:graphicImage library="images" name="icons/excel.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xls" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/pdf.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="pdf" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}"/>
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/csv.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="csv" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/xml.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xml" target="datalist" fileName="listacomercios#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+                        
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

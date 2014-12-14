@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TarjetaCreateDlg" widgetVar="TarjetaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTarjetaTitle}">
+            <h:form id="TarjetaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tarjetaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTarjetaLabel_numero}" for="numero" />
+                        <p:inputMask id="numero" value="#{tarjetaController.selected.numero}" title="#{bundle.CreateTarjetaTitle_numero}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_numero}" mask="9999999999999999"/>
+                        <p:outputLabel value="#{bundle.CreateTarjetaLabel_ultimos4}" for="ultimos4" />
+                        <p:inputMask id="ultimos4" value="#{tarjetaController.selected.ultimos4}" title="#{bundle.CreateTarjetaTitle_ultimos4}" mask="9999"/>
+                        <p:outputLabel value="#{bundle.CreateTarjetaLabel_tipoTarjeta}" for="tipoTarjeta" />
+                        
+	                        <p:selectOneButton id="tipoTarjeta" value="#{tarjetaController.selected.tipoTarjeta}" title="#{bundle.CreateTarjetaTitle_tipoTarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_tipoTarjeta}">           
+								<f:selectItems value="#{applicationController.tiposTarjeta}"
+	                          	var="objItem" itemValue="#{objItem}" itemLabel="#{objItem}"/>
+					        </p:selectOneButton>
+                        <p:outputLabel value="#{bundle.CreateTarjetaLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{tarjetaController.selected.marca}" title="#{bundle.CreateTarjetaTitle_marca}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_marca}"/>
+                   		<p:outputLabel value="#{bundle.CreateTarjetaLabel_clienteId}" for="clienteId" />
+                        <p:selectOneMenu id="clienteId" value="#{tarjetaController.selected.clienteId}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_clienteId}">
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="clienteIdItem"
+                                           itemValue="#{clienteIdItem.id}" itemLabel="#{clienteIdItem.identificacion} #{clienteIdItem.nombre} #{clienteIdItem.apellido1}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTarjetaLabel_entidadId}" for="entidadId" />
+                        <p:selectOneMenu id="entidadId" value="#{tarjetaController.selected.entidadId}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_entidadId}">
+                            <f:selectItems value="#{entidadController.itemsAvailableSelectOne}"
+                                           var="entidadIdItem"
+                                           itemValue="#{entidadIdItem.id}" itemLabel="#{entidadIdItem.id} #{entidadIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tarjetaController.create}" value="#{bundle.Save}" update="display,:TarjetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TarjetaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TarjetaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>prototype</artifactId>
+        <groupId>com.company</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>prototype-ejb</artifactId>
+    <packaging>ejb</packaging>
+
+    <name>prototype - ejb</name>
+
+    <url>http://wildfly.org</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+    
+      <properties>
+    <version.java>1.8</version.java>   
+    <!-- Databases -->
+    <version.derby>10.10.1.1</version.derby>
+      
+  </properties>
+  
+  <repositories>
+<repository>
+<id>JBoss Repository</id>
+<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+</repository>
+</repositories>
+
+    <dependencyManagement>
+
+    
+        <dependencies>
+
+		
+		<dependency>
+		<groupId>org.wildfly.bom</groupId>
+		<artifactId>jboss-javaee-7.0-with-all</artifactId>
+		<version>${version.wildfly.bom}</version>
+		<scope>import</scope>
+		<type>pom</type>
+		</dependency>
+             
+        </dependencies>
+    </dependencyManagement>
+ 
+    <dependencies>
+    	<!-- Projects Dependencies -->
+      <dependency>
+            <groupId>com.company</groupId>
+            <artifactId>base</artifactId>
+            <scope>provided</scope>
+             <version>${version.baseproject}</version>
+      </dependency>
+      
+      
+      
+      <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the CDI API -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Import the Common Annotations API (JSR-250) -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+  		<dependency>
+		  <groupId>org.infinispan</groupId>
+		  <artifactId>infinispan-core</artifactId>
+    	  <version>6.0.2.Final</version>
+    	  <!-- Provided as we use the Infinispan provided by Wildfly -->
+    	  <scope>provided</scope>
+		</dependency>
+
+
+        <!-- Optional, but highly recommended -->
+        <!-- Arquillian allows you to test enterprise code such as EJBs and 
+            Transactional(JTA) JPA from JUnit/TestNG -->
+       <dependency>
+		  <groupId>org.jboss.arquillian.junit</groupId>
+		  <artifactId>arquillian-junit-container</artifactId>
+		  <scope>test</scope>
+        </dependency>
+      
+        <dependency>
+		  <groupId>org.jboss.arquillian.protocol</groupId>
+		  <artifactId>arquillian-protocol-servlet</artifactId>
+	
+		  <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        
+      
+        
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+        	
+            <plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>${version.ejb.plugin}</version>
+                <configuration>
+                	<defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <!-- Tell Maven we are using EJB 3.2 -->
+                    <ejbVersion>${version.ejb.package}</ejbVersion>
+                    <archive>
+                    	<manifestEntries>
+          					<Dependencies>org.infinispan export</Dependencies>
+        				</manifestEntries>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>            
+            
+        </plugins>
+    </build>
+    
+      <profiles>
+        <profile>
+            <!-- The default profile skips all tests, though you can tune it 
+                to run just unit tests based on a custom pattern -->
+            <!-- Seperate profiles are provided for running all tests, including 
+                Arquillian tests that execute in the specified container -->
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${version.surefire.plugin}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <!-- An optional Arquillian testing profile that executes tests 
+                in your JBoss AS instance -->
+            <!-- This profile will start a new JBoss AS instance, and execute 
+                the test, shutting it down when done -->
+            <!-- Run with: mvn clean test -Parq-jbossas-managed -->
+            <id>arq-jbossas-managed</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.as</groupId>
+                    <artifactId>jboss-as-arquillian-container-managed</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <!-- An optional Arquillian testing profile that executes tests 
+                in a remote JBoss AS instance -->
+            <!-- Run with: mvn clean test -Parq-jbossas-remote -->
+            <id>arq-jbossas-remote</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.as</groupId>
+                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+    </profiles>
+
+
+</project>

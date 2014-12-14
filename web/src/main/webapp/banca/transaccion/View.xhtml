@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransaccionViewDlg" widgetVar="TransaccionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTransaccionTitle}">
+            <h:form id="TransaccionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transaccionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_id}"/>
+                        <h:outputText value="#{transaccionController.selected.id}" title="#{bundle.ViewTransaccionTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_identificacion}"/>
+                        <h:outputText value="#{transaccionController.selected.identificacion}" title="#{bundle.ViewTransaccionTitle_identificacion}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_referencia}"/>
+                        <h:outputText value="#{transaccionController.selected.referencia}" title="#{bundle.ViewTransaccionTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_fecha}"/>
+                        <h:outputText value="#{transaccionController.selected.fecha}" title="#{bundle.ViewTransaccionTitle_fecha}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_estado}"/>
+                        <h:outputText value="#{transaccionController.selected.estado}" title="#{bundle.ViewTransaccionTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_valor}"/>
+                        <h:outputText value="#{transaccionController.selected.valor}" title="#{bundle.ViewTransaccionTitle_valor}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_comercioId}"/>
+                        <h:outputText value="#{transaccionController.selected.comercioId}" title="#{bundle.ViewTransaccionTitle_comercioId}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_cuenta}"/>
+                        <h:outputText value="#{transaccionController.selected.cuenta}" title="#{bundle.ViewTransaccionTitle_cuenta}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_cuenta1}"/>
+                        <h:outputText value="#{transaccionController.selected.cuenta1}" title="#{bundle.ViewTransaccionTitle_cuenta1}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_monedaId}"/>
+                        <h:outputText value="#{transaccionController.selected.monedaId}" title="#{bundle.ViewTransaccionTitle_monedaId}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_tarjetaNumero}"/>
+                        <h:outputText value="#{transaccionController.selected.tarjetaNumero}" title="#{bundle.ViewTransaccionTitle_tarjetaNumero}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_tipocambioId}"/>
+                        <h:outputText value="#{transaccionController.selected.tipocambioId}" title="#{bundle.ViewTransaccionTitle_tipocambioId}"/>
+                        <h:outputText value="#{bundle.ViewTransaccionLabel_tipotransaccionId}"/>
+                        <h:outputText value="#{transaccionController.selected.tipotransaccion}" title="#{bundle.ViewTransaccionTitle_tipotransaccionId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TransaccionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

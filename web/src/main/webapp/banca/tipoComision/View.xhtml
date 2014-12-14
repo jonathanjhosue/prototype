@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoComisionViewDlg" widgetVar="TipoComisionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipoComisionTitle}">
+            <h:form id="TipoComisionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoComisionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_id}"/>
+                        <h:outputText value="#{tipoComisionController.selected.id}" title="#{bundle.ViewTipoComisionTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_fecha}"/>
+                        <h:outputText value="#{tipoComisionController.selected.fecha}" title="#{bundle.ViewTipoComisionTitle_fecha}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_tipoComision}"/>
+                        <h:outputText value="#{tipoComisionController.selected.tipoComision}" title="#{bundle.ViewTipoComisionTitle_tipoComision}"/>
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_porcentaje}"/>
+                        <h:outputText value="#{tipoComisionController.selected.porcentaje}" title="#{bundle.ViewTipoComisionTitle_porcentaje}"/>
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_estado}"/>
+                        <h:outputText value="#{tipoComisionController.selected.estado}" title="#{bundle.ViewTipoComisionTitle_estado}"/>
+                        
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_comercioId}"/>
+                        <h:outputText value="#{tipoComisionController.selected.comercioId.nombre}" title="#{bundle.ViewTipoComisionTitle_comercioId}"/>                        
+                        
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_admCreacion}"/>
+                        <h:outputText value="#{tipoComisionController.selected.admCreacion}" title="#{bundle.ViewTipoComisionTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_admActualizacion}"/>
+                        <h:outputText value="#{tipoComisionController.selected.admActualizacion}" title="#{bundle.ViewTipoComisionTitle_admActualizacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoComisionLabel_admUsuario}"/>
+                        <h:outputText value="#{tipoComisionController.selected.admUsuario}" title="#{bundle.ViewTipoComisionTitle_admUsuario}"/>
+                        
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TipoComisionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

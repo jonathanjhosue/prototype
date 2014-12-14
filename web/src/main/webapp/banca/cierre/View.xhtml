@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CierreViewDlg" widgetVar="CierreViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCierreTitle}">
+            <h:form id="CierreViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cierreController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCierreLabel_id}"/>
+                        <h:outputText value="#{cierreController.selected.id}" title="#{bundle.ViewCierreTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCierreLabel_fecha}"/>
+                        <h:outputText value="#{cierreController.selected.fecha}" title="#{bundle.ViewCierreTitle_fecha}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCierreLabel_admUsuario}"/>
+                        <h:outputText value="#{cierreController.selected.admUsuario}" title="#{bundle.ViewCierreTitle_admUsuario}"/>
+                        <h:outputText value="#{bundle.ViewCierreLabel_entidadId}"/>
+                        <h:outputText value="#{cierreController.selected.entidadId.id} || #{cierreController.selected.entidadId.referencia} || #{cierreController.selected.entidadId.nombre}" 
+                                      title="#{bundle.ViewCierreTitle_entidadId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CierreViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.org/ui"
+   template="/WEB-INF/templates/client_template.xhtml">
+   
+
+  
+   <ui:define name="title">Sistema de Actualización e Integración</ui:define>
+   
+   
+   <ui:define name="box1">
+   
+    <h:outputScript library="angular" name="AccountCtrl.js" target="head"/>   
+	    <h2>Cuentas</h2>
+	    <div class="clientData" ng-app="myApp" >
+	    <div ng-controller="AccountCtrl">  
+       <form id="formAccount" target="frameCode" action="http://localhost:8080/prototype-web/rest/accountWs/x/y/json" method="get">
+       <label for="entity">Entity Id</label> <input type="text" name="entity" ng-model="accountForm.entity"/> <br /> 
+       <label for="account">Cuenta Identity</label> <input type="text" name="account" ng-model="accountForm.account"/><br /> 
+<br />
+		<a href="#" class="button" ng-click="searchAccount()"><span><span>Buscar</span></span></a>
+		<a href="#" class="button" ng-click="getResponse('xml')"><span><span>XML</span></span></a>
+		<a href="#" class="button" ng-click="getResponse('json')"><span><span>JSON</span></span></a>		
+		</form>
+		<br/>
+		<h2>Estados de Cuenta</h2> 
+		
+		
+		 <div class="gridStyle" ng-grid="gridOptions">
+		</div>
+		<h2>Movimientos</h2>  
+		<div class="gridStyle" ng-grid="gridOptionsDetails">
+		</div>
+    	
+		<LABEL>Data</LABEL><code class="selectedItems codeoutput">{{selectedAccount[0]}}</code><br/>
+		<br/>
+
+		<LABEL>Servicio</LABEL><span>{{UrlService}}</span>
+		    <iframe id="frameCode" name="frameCode" src=""></iframe>
+		
+
+	<p:graphicImage library="design" class="img" name="images/img1.png" alt=""/>							
+	</div>
+
+	</div>
+	
+   </ui:define>
+   
+    <ui:define name="box2">
+    
+		
+		<p:graphicImage library="design" class="img" name="images/img2.png" alt=""/>						
+	
+   </ui:define>
+   
+   <ui:define name="box3">
+      
+		<h2>Contactos</h2>
+		<p class="pad_bot1">
+			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
+		</p>
+		<a href="#" class="button"><span><span>Leer Más</span></span></a>
+		<p:graphicImage library="design" class="img" name="images/img3.png" alt=""/>						
+	
+   </ui:define>
+   
+   
+    <ui:define name="sidebarleft">
+      
+      
+      
+		<h2>Testimonials</h2>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>
+			</figure>
+			<span class="color1">Michael Donovan</span><br/>
+			Sit amet, ectetuer adgipi scing elit.<a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img2.jpg" alt=""/>
+			</figure>
+			<span class="color1">Jane White</span><br/>
+			Neque porro quisquahm est, qui dolorem. <a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img3.jpg" alt=""/>
+			</figure>
+			<span class="color1">James Doe</span><br/>
+			Quis autem vel eum iure reprehenderit. <a href="#">More</a>
+		</div>						
+
+   </ui:define>
+   
+   <ui:define name="maincontent">
+
+
+   
+   
+
+
+   </ui:define>
+   
+</ui:composition>

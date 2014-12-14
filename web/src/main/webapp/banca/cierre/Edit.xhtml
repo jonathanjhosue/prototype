@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CierreEditDlg" widgetVar="CierreEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCierreTitle}">
+            <h:form id="CierreEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cierreController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCierreLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{cierreController.selected.id}" title="#{bundle.EditCierreTitle_id}" required="true" requiredMessage="#{bundle.EditCierreRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditCierreLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{cierreController.selected.fecha}" title="#{bundle.EditCierreTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCierreLabel_admUsuario}" for="admUsuario" />
+                        <p:inputText id="admUsuario" value="#{cierreController.selected.admUsuario}" title="#{bundle.EditCierreTitle_admUsuario}" />
+                        <p:outputLabel value="#{bundle.EditCierreLabel_entidadId}" for="entidadId" />
+                        <p:selectOneMenu id="entidadId" value="#{cierreController.selected.entidadId}" required="true" requiredMessage="#{bundle.EditCierreRequiredMessage_entidadId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{entidadController.itemsAvailableSelectOne}"
+                                           var="entidadIdItem"
+                                           itemValue="#{entidadIdItem}" itemLabel="#{entidadIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cierreController.update}" value="#{bundle.Save}" update="display,:CierreListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CierreEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CierreEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

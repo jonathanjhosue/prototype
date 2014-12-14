@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioEditDlg" widgetVar="UsuarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUsuarioTitle}">
+            <h:form id="UsuarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_usuarioPK_usuario}" for="usuarioPK_usuario" />
+                        <p:inputText id="usuarioPK_usuario" value="#{usuarioController.selected.usuarioPK.usuario}" title="#{bundle.EditUsuarioTitle_usuarioPK_usuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuarioPK_usuario}"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_usuarioPK_referencia}" for="usuarioPK_referencia" />
+                        <p:inputText id="usuarioPK_referencia" value="#{usuarioController.selected.usuarioPK.referencia}" title="#{bundle.EditUsuarioTitle_usuarioPK_referencia}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuarioPK_referencia}"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{usuarioController.selected.password}" title="#{bundle.EditUsuarioTitle_password}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_password}"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.EditUsuarioTitle_estado}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_rol}" for="rol" />
+                        <p:inputText id="rol" value="#{usuarioController.selected.rol}" title="#{bundle.EditUsuarioTitle_rol}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_rol}"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_admCreacion}" for="admCreacion" />
+                        <p:calendar id="admCreacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{usuarioController.selected.admCreacion}" title="#{bundle.EditUsuarioTitle_admCreacion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_admCreacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_admActualizacion}" for="admActualizacion" />
+                        <p:calendar id="admActualizacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{usuarioController.selected.admActualizacion}" title="#{bundle.EditUsuarioTitle_admActualizacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_admUsuario}" for="admUsuario" />
+                        <p:inputText id="admUsuario" value="#{usuarioController.selected.admUsuario}" title="#{bundle.EditUsuarioTitle_admUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_admUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

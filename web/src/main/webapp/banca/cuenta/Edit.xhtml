@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentaEditDlg" widgetVar="CuentaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCuentaTitle}">
+            <h:form id="CuentaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{cuentaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_cuentaPK_numero}" for="cuentaPK_numero" />
+                        <p:inputText id="cuentaPK_numero" value="#{cuentaController.selected.cuentaPK.numero}" title="#{bundle.EditCuentaTitle_cuentaPK_numero}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_cuentaPK_numero}"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_estado}" for="estado" />
+                        <p:selectOneRadio id="estado" value="#{cuentaController.selected.estado}" title="#{bundle.EditCuentaTitle_estado}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_estado}">
+				        	<f:selectItems value="#{applicationController.estadosEstandar}"
+                                           var="objItem"
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
+				        </p:selectOneRadio>
+                        
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_tipoCuenta}" for="tipoCuenta" />
+                        <p:selectOneButton id="tipoCuenta" value="#{cuentaController.selected.tipoCuenta}" title="#{bundle.EditCuentaTitle_tipoCuenta}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_tipoCuenta}">           
+				             <f:selectItems value="#{applicationController.tiposCuenta}"
+                                           var="objItem"
+                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+				        </p:selectOneButton> 
+                                                
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_fechaCreacion}" for="fechaCreacion" />
+                        <p:calendar id="fechaCreacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{cuentaController.selected.fechaCreacion}" title="#{bundle.EditCuentaTitle_fechaCreacion}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_fechaCreacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_fechaActivacion}" for="fechaActivacion" />
+                        <p:calendar id="fechaActivacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{cuentaController.selected.fechaActivacion}" title="#{bundle.EditCuentaTitle_fechaActivacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_fechaDesactivacion}" for="fechaDesactivacion" />
+                        <p:calendar id="fechaDesactivacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{cuentaController.selected.fechaDesactivacion}" title="#{bundle.EditCuentaTitle_fechaDesactivacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_predeterminada}" for="predeterminada" />
+                        <p:selectBooleanCheckbox id="predeterminada" value="#{cuentaController.selected.predeterminada}" />
+                        
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_admCreacion}"  />
+                         <h:outputText value="#{cuentaController.selected.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_admActualizacion}"  />
+                         <h:outputText value="#{cuentaController.selected.admActualizacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_admUsuario}"  />
+                        <h:outputText value="#{cuentaController.selected.admUsuario}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_clienteId}" for="clienteId" />
+                        <p:selectOneMenu id="clienteId" value="#{cuentaController.selected.clienteId}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_clienteId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="clienteIdItem"
+                                           itemValue="#{clienteIdItem}" itemLabel="#{clienteIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_entidad}" for="entidad" />
+                        <p:selectOneMenu id="entidad" value="#{cuentaController.selected.entidad}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_entidad}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{entidadController.itemsAvailableSelectOne}"
+                                           var="entidadItem"
+                                           itemValue="#{entidadItem}" itemLabel="#{entidadItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_monedaId}" for="monedaId" />
+                        <p:selectOneMenu id="monedaId" value="#{cuentaController.selected.monedaId}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_monedaId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
+                                           var="monedaIdItem"
+                                           itemValue="#{monedaIdItem}" itemLabel="#{monedaIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuentaController.update}" value="#{bundle.Save}" update="display,:CuentaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CuentaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuentaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

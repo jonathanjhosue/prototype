@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogEditDlg" widgetVar="LogEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLogTitle}">
+            <h:form id="LogEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLogLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{logController.selected.id}" title="#{bundle.EditLogTitle_id}" required="true" requiredMessage="#{bundle.EditLogRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditLogLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{logController.selected.fecha}" title="#{bundle.EditLogTitle_fecha}" required="true" requiredMessage="#{bundle.EditLogRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditLogLabel_modelo}" for="modelo" />
+                        <p:inputText id="modelo" value="#{logController.selected.modelo}" title="#{bundle.EditLogTitle_modelo}" />
+                        <p:outputLabel value="#{bundle.EditLogLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{logController.selected.referencia}" title="#{bundle.EditLogTitle_referencia}" />
+                        <p:outputLabel value="#{bundle.EditLogLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{logController.selected.usuario}" title="#{bundle.EditLogTitle_usuario}" />
+                        <p:outputLabel value="#{bundle.EditLogLabel_log}" for="log" />
+                        <p:inputText id="log" value="#{logController.selected.log}" title="#{bundle.EditLogTitle_log}" required="true" requiredMessage="#{bundle.EditLogRequiredMessage_log}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logController.update}" value="#{bundle.Save}" update="display,:LogListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LogEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LogEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

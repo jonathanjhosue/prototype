@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>Custom Plunker</title>  
+        <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
+      <style>
+        .gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px; 
+    height: 300px;
+    float: left;
+}
+
+.selectedItems{
+    float: left; 
+}
+        </style>
+        
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="/prototype-web/javax.faces.resource/js/jquery-2.1.1.min.js.xhtml?ln=design"></script>
+        <script src="/prototype-web/javax.faces.resource/angular1.3.1.min.js.xhtml?ln=angular"></script>
+        <script type="text/javascript" src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>
+        <script type="text/javascript">
+
+        var app = angular.module('myApp', ['ngGrid']);
+        app.controller('MyCtrl', function($scope,$http) {
+
+        	$scope.resultData = {};
+
+        	$http.get('http://localhost:8080/prototype-web/rest/accountWs/qwr/34324/json',{}).
+ 	        success(function (data) {
+ 	        	
+ 	        	$scope.resultData = data.stateAccounts; 
+ 	        	
+ 	        });
+            
+            
+            $scope.myData = [{name: "Moroni", age: 50},
+                             {name: "Tiancum", age: 43},
+                             {name: "Jacob", age: 27},
+                             {name: "Nephi", age: 29},
+                             {name: "Enos", age: 34}];
+            $scope.gridOptions = { data: 'myData', 
+            	 selectedItems: $scope.mySelections,
+                 multiSelect: false
+
+                };
+        });
+
+        </script>
+    </head>
+<body ng-controller="MyCtrl">
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+        <div class="selectedItems">{{mySelections}}</div>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentaViewDlg" widgetVar="CuentaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCuentaTitle}">
+            <h:form id="CuentaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{cuentaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCuentaLabel_cuentaPK_numero}"/>
+                        <h:outputText value="#{cuentaController.selected.cuentaPK.numero}" title="#{bundle.ViewCuentaTitle_cuentaPK_numero}"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_estado}"/>
+                        <h:outputText value="#{cuentaController.selected.estado}" title="#{bundle.ViewCuentaTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_tipoCuenta}"/>
+                        <h:outputText value="#{cuentaController.selected.tipoCuenta}" title="#{bundle.ViewCuentaTitle_tipoCuenta}"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_fechaCreacion}"/>
+                        <h:outputText value="#{cuentaController.selected.fechaCreacion}" title="#{bundle.ViewCuentaTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_fechaActivacion}"/>
+                        <h:outputText value="#{cuentaController.selected.fechaActivacion}" title="#{bundle.ViewCuentaTitle_fechaActivacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_fechaDesactivacion}"/>
+                        <h:outputText value="#{cuentaController.selected.fechaDesactivacion}" title="#{bundle.ViewCuentaTitle_fechaDesactivacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_predeterminada}"/>
+                        <p:selectBooleanCheckbox value="#{cuentaController.selected.predeterminada}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_admCreacion}"/>
+                        <h:outputText value="#{cuentaController.selected.admCreacion}" title="#{bundle.ViewCuentaTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_admActualizacion}"/>
+                        <h:outputText value="#{cuentaController.selected.admActualizacion}" title="#{bundle.ViewCuentaTitle_admActualizacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_admUsuario}"/>
+                        <h:outputText value="#{cuentaController.selected.admUsuario}" title="#{bundle.ViewCuentaTitle_admUsuario}"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_clienteId}"/>
+                        <h:outputText value="#{cuentaController.selected.clienteId}" title="#{bundle.ViewCuentaTitle_clienteId}"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_entidad}"/>
+                        <h:outputText value="#{cuentaController.selected.entidad}" title="#{bundle.ViewCuentaTitle_entidad}"/>
+                        <h:outputText value="#{bundle.ViewCuentaLabel_monedaId}"/>
+                        <h:outputText value="#{cuentaController.selected.monedaId}" title="#{bundle.ViewCuentaTitle_monedaId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CuentaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

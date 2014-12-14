@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MovimientoEditDlg" widgetVar="MovimientoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMovimientoTitle}">
+            <h:form id="MovimientoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{movimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{movimientoController.selected.id}" title="#{bundle.EditMovimientoTitle_id}" required="true" requiredMessage="#{bundle.EditMovimientoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{movimientoController.selected.descripcion}" title="#{bundle.EditMovimientoTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_tipoMovimiento}" for="tipoMovimiento" />
+                        <p:inputText id="tipoMovimiento" value="#{movimientoController.selected.tipoMovimiento}" title="#{bundle.EditMovimientoTitle_tipoMovimiento}" />
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{movimientoController.selected.valor}" title="#{bundle.EditMovimientoTitle_valor}" required="true" requiredMessage="#{bundle.EditMovimientoRequiredMessage_valor}"/>
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_estadocuentaId}" for="estadocuentaId" />
+                        <p:selectOneMenu id="estadocuentaId" value="#{movimientoController.selected.estadocuentaId}" required="true" requiredMessage="#{bundle.EditMovimientoRequiredMessage_estadocuentaId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoCuentaController.itemsAvailableSelectOne}"
+                                           var="estadocuentaIdItem"
+                                           itemValue="#{estadocuentaIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_tipocambioId}" for="tipocambioId" />
+                        <p:selectOneMenu id="tipocambioId" value="#{movimientoController.selected.tipocambioId}" required="true" requiredMessage="#{bundle.EditMovimientoRequiredMessage_tipocambioId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoCambioController.itemsAvailableSelectOne}"
+                                           var="tipocambioIdItem"
+                                           itemValue="#{tipocambioIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMovimientoLabel_transaccionId}" for="transaccionId" />
+                        <p:selectOneMenu id="transaccionId" value="#{movimientoController.selected.transaccionId}" required="true" requiredMessage="#{bundle.EditMovimientoRequiredMessage_transaccionId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{transaccionController.itemsAvailableSelectOne}"
+                                           var="transaccionIdItem"
+                                           itemValue="#{transaccionIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{movimientoController.update}" value="#{bundle.Save}" update="display,:MovimientoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MovimientoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MovimientoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

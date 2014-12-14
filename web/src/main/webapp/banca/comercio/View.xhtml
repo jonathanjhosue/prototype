@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ComercioViewDlg" widgetVar="ComercioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewComercioTitle}">
+            <h:form id="ComercioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{comercioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewComercioLabel_id}"/>
+                        <h:outputText value="#{comercioController.selected.id}" title="#{bundle.ViewComercioTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_identificacion}"/>
+                        <h:outputText value="#{comercioController.selected.identificacion}" title="#{bundle.ViewComercioTitle_identificacion}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_referencia}"/>
+                        <h:outputText value="#{comercioController.selected.referencia}" title="#{bundle.ViewComercioTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_nombre}"/>
+                        <h:outputText value="#{comercioController.selected.nombre}" title="#{bundle.ViewComercioTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_estado}"/>
+                        <h:outputText value="#{comercioController.selected.estado}" title="#{bundle.ViewComercioTitle_estado}"/>
+                         <p:outputLabel value=""  /> <h:outputText value=""  />
+                        <h:outputText value="#{bundle.ViewComercioLabel_pais}"/>
+                        <h:outputText value="#{comercioController.selected.pais}" title="#{bundle.ViewComercioTitle_pais}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_ciudad}"/>
+                        <h:outputText value="#{comercioController.selected.ciudad}" title="#{bundle.ViewComercioTitle_ciudad}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_direccion}"/>
+                        <h:outputText value="#{comercioController.selected.direccion}" title="#{bundle.ViewComercioTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_contactos}"/>
+                        <h:outputText value="#{comercioController.selected.contactos}" title="#{bundle.ViewComercioTitle_contactos}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_admCreacion}"/>
+                        <h:outputText value="#{comercioController.selected.admCreacion}" title="#{bundle.ViewComercioTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComercioLabel_admActualizacion}"/>
+                        <h:outputText value="#{comercioController.selected.admActualizacion}" title="#{bundle.ViewComercioTitle_admActualizacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComercioLabel_admUsuario}"/>
+                        <h:outputText value="#{comercioController.selected.admUsuario}" title="#{bundle.ViewComercioTitle_admUsuario}"/>
+                        <h:outputText value="#{bundle.ViewComercioLabel_clienteId}"/>
+                        <h:outputText value="#{comercioController.selected.clienteId}" title="#{bundle.ViewComercioTitle_clienteId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ComercioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

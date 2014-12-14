@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+
+   <parent>
+      <artifactId>prototype</artifactId>
+      <groupId>com.company</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+   </parent>
+
+   <artifactId>prototype-web</artifactId>
+   <packaging>war</packaging>
+
+   <name>prototype - web</name>
+
+   <url>http://wildfly.org</url>
+   <licenses>
+      <license>
+         <name>Apache License, Version 2.0</name>
+         <distribution>repo</distribution>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      </license>
+   </licenses>
+   
+   <repositories>
+    <repository>
+        <id>prime-repo</id>
+        <name>PrimeFaces Maven Repository</name>
+        <url>http://repository.primefaces.org</url>
+        <layout>default</layout>
+    </repository>
+</repositories>
+   
+    <dependencyManagement>
+        <dependencies>
+		
+		<dependency>
+		<groupId>org.wildfly.bom</groupId>
+		<artifactId>jboss-javaee-7.0-with-all</artifactId>
+		<version>${version.wildfly.bom}</version>
+		<scope>import</scope>
+		<type>pom</type>
+		</dependency>
+             
+		
+                
+        </dependencies>
+    </dependencyManagement>
+   
+ 
+   <dependencies>
+   
+       	<!-- Projects Dependencies -->
+       <dependency>
+            <groupId>com.company</groupId>
+            <artifactId>base</artifactId>
+            <scope>provided</scope>
+             <version>${version.baseproject}</version>
+      </dependency>
+      
+      
+      <dependency>
+        	<groupId>org.hibernate.javax.persistence</groupId>
+        	<artifactId>hibernate-jpa-2.1-api</artifactId>
+        	 <scope>provided</scope>
+        </dependency>
+
+      <!-- Dependency on the EJB module so we can use it's services if needed -->
+      <dependency>
+         <groupId>com.company</groupId>
+         <artifactId>prototype-ejb</artifactId>
+         <type>ejb</type>
+
+         <scope>provided</scope>
+      </dependency>    
+
+		<!-- whether it is only a web project it can be used just with this dependency  -->
+		<!--dependency>
+  <groupId>org.jboss.spec</groupId>
+  <artifactId>jboss-javaee-web-7.0</artifactId>
+  <version>1.0.0.Final</version>
+  <type>pom</type>
+</dependency-->
+
+		
+		    <dependency>  
+        <groupId>org.primefaces</groupId>  
+        <artifactId>primefaces</artifactId>  
+        <version>${version.primefaces}</version>  
+    </dependency>
+    
+    <dependency>  
+    <groupId>org.primefaces.themes</groupId>  
+    <artifactId>all-themes</artifactId>  
+    <version>1.0.10</version>  
+</dependency>
+
+<dependency>
+    <groupId>org.omnifaces</groupId>
+    <artifactId>omnifaces</artifactId>
+    <version>1.8.1</version> <!-- Or 2.0-SNAPSHOT or 1.10-SNAPSHOT -->
+</dependency>
+    
+    
+    <dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi</artifactId>
+	<version>${version.apache.poi}</version>
+</dependency>
+    
+    <!--dependency>
+	<groupId>jasperreports</groupId>
+	<artifactId>jasperreports</artifactId>
+	<version>3.5.3</version>
+	</dependency-->
+	
+	<dependency>
+	  <groupId>net.sf.jasperreports</groupId>
+	  <artifactId>jasperreports</artifactId>
+	  <version>5.6.1</version>
+	</dependency>
+	
+	<dependency>
+  <groupId>net.sf.jasperreports</groupId>
+  <artifactId>jasperreports-fonts</artifactId>
+  <version>5.6.1</version>
+</dependency>
+	
+	
+		<dependency>
+<groupId>org.jboss.spec.javax.servlet</groupId>
+<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+<scope>provided</scope>
+</dependency>
+
+	<dependency>
+<groupId>org.jboss.resteasy</groupId>
+<artifactId>jaxrs-api</artifactId>
+
+</dependency>
+	
+	<dependency>
+<groupId>javax.enterprise</groupId>
+<artifactId>cdi-api</artifactId>
+<scope>provided</scope>
+</dependency>
+
+	<dependency>
+<groupId>org.jboss.spec.javax.annotation</groupId>
+<artifactId>jboss-annotations-api_1.2_spec</artifactId>
+<scope>provided</scope>
+</dependency>
+
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
+			<scope>provided</scope>
+			<optional>false</optional>
+		</dependency>
+		
+		<dependency>
+	<groupId>javax.el</groupId>
+	<artifactId>javax.el-api</artifactId>
+    <scope>provided</scope>
+</dependency>   
+
+      <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>         
+                
+                <dependency>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                    <version>1.1</version>
+                    <scope>provided</scope>
+                </dependency>
+                
+                
+                <dependency>
+<groupId>org.jboss.spec.javax.json</groupId>
+<artifactId>jboss-json-api_1.0_spec</artifactId>
+</dependency>
+
+   </dependencies>
+
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+
+         
+         <plugin>
+		 <artifactId>maven-clean-plugin</artifactId>
+		 <version>2.6</version>
+		 <configuration>
+		   <filesets>
+		     <fileset>
+		       <directory>src/main/resources/jasperreports</directory>
+		       <includes>
+		         <include>**/*.jasper</include>
+		       </includes>
+		       <followSymlinks>false</followSymlinks>
+		     </fileset>
+		   </filesets>
+		 </configuration>
+		</plugin>
+		
+		<plugin>
+		 <groupId>com.alexnederlof</groupId>
+		 <artifactId>jasperreports-plugin</artifactId>
+		 <version>1.9</version>
+		 <executions>
+		   <execution>
+		     <id>jasperreports</id>
+		     <phase>process-sources</phase>
+		     <goals>
+		       <goal>jasper</goal>
+		     </goals>
+		     <configuration>
+		       <compiler>net.sf.jasperreports.engine.design.JRJdtCompiler</compiler>
+		       <sourceDirectory>src/main/resources/jasperreports/src</sourceDirectory>
+		       <outputDirectory>src/main/resources/jasperreports</outputDirectory>
+		       <outputFileExt>.jasper</outputFileExt>
+		       <xmlValidation>true</xmlValidation>
+		       <verbose>false</verbose>
+		        <!-- additionalProperties>
+	            <net.sf.jasperreports.awt.ignore.missing.font>true</net.sf.jasperreports.awt.ignore.missing.font>
+	            <net.sf.jasperreports.default.pdf.font.name>Courier</net.sf.jasperreports.default.pdf.font.name>
+	            <net.sf.jasperreports.default.pdf.encoding>UTF-8</net.sf.jasperreports.default.pdf.encoding>
+	            <net.sf.jasperreports.default.pdf.embedded>true</net.sf.jasperreports.default.pdf.embedded>
+	           </additionalProperties-->
+		       
+		     </configuration>
+		   </execution>
+		 </executions>
+		</plugin>
+		
+         <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>${version.war.plugin}</version>
+            <configuration>
+               <!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+         </plugin>
+         
+         
+      </plugins>
+      <pluginManagement>
+      	<plugins>
+      		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+      		<plugin>
+      			<groupId>org.eclipse.m2e</groupId>
+      			<artifactId>lifecycle-mapping</artifactId>
+      			<version>1.0.0</version>
+      			<configuration>
+      				<lifecycleMappingMetadata>
+      					<pluginExecutions>
+      						<pluginExecution>
+      							<pluginExecutionFilter>
+      								<groupId>
+      									com.alexnederlof
+      								</groupId>
+      								<artifactId>
+      									jasperreports-plugin
+      								</artifactId>
+      								<versionRange>
+      									[1.9,)
+      								</versionRange>
+      								<goals>
+      									<goal>jasper</goal>
+      								</goals>
+      							</pluginExecutionFilter>
+      							<action>
+      								<ignore></ignore>
+      							</action>
+      						</pluginExecution>
+      					</pluginExecutions>
+      				</lifecycleMappingMetadata>
+      			</configuration>
+      		</plugin>
+      	</plugins>
+      </pluginManagement>
+   </build>
+   <properties>
+   	<!-- javaee6.web.spec.version>2.0.0.Final</javaee6.web.spec.version-->
+   </properties>
+
+</project>

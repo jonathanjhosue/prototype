@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.org/ui"
+   template="/WEB-INF/templates/client_template.xhtml">
+   
+
+  
+   <ui:define name="title">Sitio de Comercios</ui:define>
+   
+   
+   <ui:define name="box1">
+   
+		<h2>Transacciones de Comercios</h2> 
+		
+		<h:form target="frameCode" method="post">
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+				<p:outputLabel for="entityId" value="Entidad: " />	
+				<p:inputText id="entityId" value="#{comercioReportController.entityId}"  required="true" />
+				<p:outputLabel for="merchandId" value="Comercio: " />	
+				<p:inputText id="merchandId" value="#{comercioReportController.merchandId}"  required="true" />
+		 	</h:panelGrid>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+		        <p:outputLabel for="reportType" value="Tipo Reporte" />
+		        <p:selectOneRadio id="reportType" value="#{comercioReportController.formatType}"  required="true">
+		            <f:selectItem itemLabel="PDF (.pdf)" itemValue=".pdf" />
+		            <f:selectItem itemLabel="ODT (.odt)" itemValue=".odt" />
+		            <f:selectItem itemLabel="Word (.docx)" itemValue=".docx" />
+		            <f:selectItem itemLabel="Excel (.xlsx)" itemValue=".xlsx" />		            
+		            <f:selectItem itemLabel="PowerPoint (.ppt)" itemValue=".ppt" />		           
+		        </p:selectOneRadio>
+		    </h:panelGrid>
+            <p:commandButton value="Ver Reporte" action="#{comercioReportController.generateReport}" icon="ui-icon-document" ajax="false" />
+        </h:form>
+
+		<iframe id="frameCode" name="frameCode" src="" style="height: 100px"></iframe>
+
+	<p:graphicImage library="design" class="img" name="images/img1.png" alt=""/>							
+		
+   </ui:define>
+   
+    <ui:define name="box2">
+    
+		
+		<p:graphicImage library="design" class="img" name="images/img2.png" alt=""/>						
+	
+   </ui:define>
+   
+   <ui:define name="box3">
+      
+		<h2>Contactos</h2>
+		<p class="pad_bot1">
+			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
+		</p>
+		<a href="#" class="button"><span><span>Leer Más</span></span></a>
+		<p:graphicImage library="design" class="img" name="images/img3.png" alt=""/>						
+	
+   </ui:define>
+   
+   
+    <ui:define name="sidebarleft">
+      
+      
+      
+		<h2>Testimonials</h2>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>
+			</figure>
+			<span class="color1">Michael Donovan</span><br/>
+			Sit amet, ectetuer adgipi scing elit.<a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img2.jpg" alt=""/>
+			</figure>
+			<span class="color1">Jane White</span><br/>
+			Neque porro quisquahm est, qui dolorem. <a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img3.jpg" alt=""/>
+			</figure>
+			<span class="color1">James Doe</span><br/>
+			Quis autem vel eum iure reprehenderit. <a href="#">More</a>
+		</div>						
+
+   </ui:define>
+   
+   <ui:define name="maincontent">
+
+
+   
+   
+
+
+   </ui:define>
+   
+</ui:composition>

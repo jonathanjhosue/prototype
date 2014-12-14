@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntidadEditDlg" widgetVar="EntidadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEntidadTitle}">
+            <h:form id="EntidadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{entidadController.selected.id}" title="#{bundle.EditEntidadTitle_id}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{entidadController.selected.referencia}" title="#{bundle.EditEntidadTitle_referencia}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{entidadController.selected.nombre}" title="#{bundle.EditEntidadTitle_nombre}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_nombre}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_estado}" for="estado" />
+                        <p:selectOneRadio id="estado" value="#{entidadController.selected.estado}" title="#{bundle.EditEntidadTitle_estado}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_estado}">
+				        	<f:selectItems value="#{applicationController.estadosEstandar}"
+                                           var="objItem"
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
+				        </p:selectOneRadio>
+				                                
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_pais}" for="pais" />
+                        <p:autoComplete id="pais" value="#{entidadController.selected.pais}" title="#{bundle.EditEntidadTitle_pais}" maxResults="6" completeMethod="#{applicationController.getCountries}" />
+                        
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_url}" for="url" />
+                        <p:inputText id="url" value="#{entidadController.selected.url}" title="#{bundle.EditEntidadTitle_url}" />
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_contactos}" for="contactos" />
+                      
+                        <p:panelGrid columns="1">                   
+	                        <p:inputTextarea id="contactos" value="#{entidadController.selected.contactos}" title="#{bundle.EditEntidadTitle_contactos}" 
+	                         rows="4" cols="40" counter="displayContactos" maxlength="510" counterTemplate="{0} #{bundle.Characteres_ramaining}" autoResize="false" />
+	    					<h:outputText id="displayContactos"   />
+    					 </p:panelGrid>  
+                        
+                        
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_admCreacion}" />
+                        <h:outputText value="#{entidadController.selected.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_admActualizacion}"  />
+                        <h:outputText value="#{entidadController.selected.admActualizacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        
+                        
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_admUsuario}"  />
+                        <h:outputText value="#{entidadController.selected.admUsuario}"/>
+                        
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{entidadController.update}" value="#{bundle.Save}" update="display,:EntidadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EntidadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EntidadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransaccionCreateDlg" widgetVar="TransaccionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTransaccionTitle}">
+            <h:form id="TransaccionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transaccionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{transaccionController.selected.id}" title="#{bundle.CreateTransaccionTitle_id}" required="true" requiredMessage="#{bundle.CreateTransaccionRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_identificacion}" for="identificacion" />
+                        <p:inputText id="identificacion" value="#{transaccionController.selected.identificacion}" title="#{bundle.CreateTransaccionTitle_identificacion}" />
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{transaccionController.selected.referencia}" title="#{bundle.CreateTransaccionTitle_referencia}" required="true" requiredMessage="#{bundle.CreateTransaccionRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{transaccionController.selected.fecha}" title="#{bundle.EditTransaccionTitle_fecha}" required="true" requiredMessage="#{bundle.EditTransaccionRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{transaccionController.selected.estado}" title="#{bundle.CreateTransaccionTitle_estado}" required="true" requiredMessage="#{bundle.CreateTransaccionRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{transaccionController.selected.valor}" title="#{bundle.CreateTransaccionTitle_valor}" required="true" requiredMessage="#{bundle.CreateTransaccionRequiredMessage_valor}"/>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_comercioId}" for="comercioId" />
+                        <p:selectOneMenu id="comercioId" value="#{transaccionController.selected.comercioId}" >
+                        	<f:selectItem itemLabel="Ninguno"  />
+                            <f:selectItems value="#{comercioController.itemsAvailableSelectOne}"
+                                           var="comercioIdItem"
+                                           itemValue="#{comercioIdItem}" itemLabel="#{comercioIdItem.identificacion} || #{comercioIdItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_cuenta}" for="cuenta" />
+                        <p:selectOneMenu id="cuenta" value="#{transaccionController.selected.cuenta}" >
+                        	<f:selectItem itemLabel="Ninguno"  />
+                            <f:selectItems value="#{cuentaController.itemsAvailableSelectOne}"
+                                           var="cuentaItem"
+                                           itemValue="#{cuentaItem}" itemLabel="#{cuentaItem.cuentaPK.numero}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_cuenta1}" for="cuenta1" />
+                        <p:selectOneMenu id="cuenta1" value="#{transaccionController.selected.cuenta1}" >
+                        	<f:selectItem itemLabel="Ninguno"  />
+                            <f:selectItems value="#{cuentaController.itemsAvailableSelectOne}"
+                                           var="cuenta1Item"
+                                           itemValue="#{cuenta1Item}" itemLabel="#{cuenta1Item.cuentaPK.numero}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_monedaId}" for="monedaId" />
+                        <p:selectOneMenu id="monedaId" value="#{transaccionController.selected.monedaId}" required="true" requiredMessage="#{bundle.EditTransaccionRequiredMessage_monedaId}">
+                        	<f:selectItem itemLabel="Ninguno"  />
+                            <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
+                                           var="monedaIdItem"
+                                           itemValue="#{monedaIdItem}" itemLabel="#{monedaIdItem.nombre}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_tarjetaNumero}" for="tarjetaNumero" />
+                        <p:selectOneMenu id="tarjetaNumero" value="#{transaccionController.selected.tarjetaNumero}" >
+                        	<f:selectItem itemLabel="Ninguno"  />
+                            <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"
+                                           var="tarjetaNumeroItem"
+                                           itemValue="#{tarjetaNumeroItem}"  itemLabel="#{tarjetaNumeroItem.numero}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_tipocambioId}" for="tipocambioId" />
+                        <p:selectOneMenu id="tipocambioId" value="#{transaccionController.selected.tipocambioId}" required="true" requiredMessage="#{bundle.EditTransaccionRequiredMessage_tipocambioId}">
+                         	<f:selectItem itemLabel="Ninguno"  />
+                            <f:selectItems value="#{tipoCambioController.itemsAvailableSelectOne}"
+                                           var="tipocambioIdItem"
+                                           itemValue="#{tipocambioIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransaccionLabel_tipotransaccionId}" for="tipotransaccion" />
+                        <p:selectOneMenu id="tipotransaccion" value="#{transaccionController.selected.tipotransaccion}" required="true" requiredMessage="#{bundle.EditTransaccionRequiredMessage_tipotransaccionId}">                           
+                            <f:selectItems value="#{tipoTransaccionController.itemsAvailableSelectOne}"
+                                           var="tipotransaccionIdItem"
+                                           itemValue="#{tipotransaccionIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{transaccionController.create}" value="#{bundle.Save}" update="display,:TransaccionListForm:datalist,:growl" oncomplete="handleSubmit(args,'TransaccionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TransaccionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

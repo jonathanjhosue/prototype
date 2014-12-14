@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions" >
+
+    <ui:composition template="/WEB-INF/templates/template1.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTipoComisionTitle}"></h:outputText>
+        </ui:define>
+        
+        
+        
+<ui:define name="box1">
+      		<h2>Contacto</h2>
+		<div class="wrapper">
+			<article class="col2">
+				<p>
+					<strong>
+						País:<br/>
+						Ciudad:<br/>
+						Teléfono:<br/>
+						Email:
+					</strong>
+				</p>
+			</article>
+			<article class="col3">
+				<p>
+					Costa Rica<br/>
+					San José<br/>
+					+354 5635600<br/>
+					<a href="mailto:">businessco@mail.com</a>
+				</p>
+			</article>
+		</div>			
+									
+	
+   </ui:define>
+   
+    <ui:define name="box2">
+      
+		<h2>Comisiones</h2>
+		<p class="pad_bot1">
+			Praesentium voluptatum<br/>deleniti atque corrupti<br/>quos dolores.
+		</p>
+		<a href="#" class="button"><span><span>Leer Más</span></span></a>
+		<p:graphicImage library="design" class="img" name="images/img2.png" alt=""/>						
+	
+   </ui:define>
+   
+   <ui:define name="box3">
+      <h2>Tipo de Comisión</h2>
+		<p class="pad_bot1">
+			At vero eos et accusamus<br/>et iusto odio dignissimos<br/>ducimus qui.
+		</p>
+		<a href="#" class="button"><span><span>Leer Más</span></span></a>
+		<p:graphicImage library="design" class="img" name="images/img1.png" alt=""/>
+			
+	
+   </ui:define>
+   
+   
+    <ui:define name="sidebarleft">
+      
+		<h2>Administración</h2>
+		<div class="wrapper pad_bot1">
+			
+			<span class="color1">Paquetes</span><br/>
+			Sit amet, ectetuer adgipi scing elit.<a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			
+			<span class="color1">Opciones</span><br/>
+			Neque porro quisquahm est, qui dolorem. <a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			
+			<span class="color1">Comercios</span><br/>
+			Quis autem vel eum iure reprehenderit. <a href="#">More</a>
+		</div>						
+
+   </ui:define>
+        
+
+        <ui:define name="maincontent">
+            <h:form id="TipoComisionListForm">
+                <p:panel header="#{bundle.ListTipoComisionTitle}">
+                    <p:dataTable id="datalist" value="#{tipoComisionController.items}" var="item"
+                                 selectionMode="single" selection="#{tipoComisionController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_tipoComision}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoComision}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_porcentaje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.porcentaje}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_admCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_admActualizacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admActualizacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_admUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipoComisionTitle_comercioId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comercioId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tipoComisionController.prepareCreate}" update=":TipoComisionCreateForm" oncomplete="PF('TipoComisionCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TipoComisionViewForm" oncomplete="PF('TipoComisionViewDialog').show()" disabled="#{empty tipoComisionController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TipoComisionEditForm" oncomplete="PF('TipoComisionEditDialog').show()" disabled="#{empty tipoComisionController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tipoComisionController.destroy}" update=":growl,datalist" disabled="#{empty tipoComisionController.selected}"/>
+                        
+                           <h:commandLink>
+				                <p:graphicImage library="images" name="icons/excel.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xls" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/pdf.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="pdf" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}"/>
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/csv.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="csv" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/xml.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xml" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+                        
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

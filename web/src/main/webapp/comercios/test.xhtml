@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<script>
+		function check(){
+			var message = document.getElementById("form:input");
+			if(confirm("Are you sure sending message "+ message.value + " !")){
+				return true;
+			}
+			return false;
+		}
+	</script>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h1>
+			<h:outputText value="JavaBeat JSF 2.2 Examples" />
+		</h1>
+		<h2>
+			<h:outputText value="JSF2 Form Example" />
+		</h2>
+		<h:outputText value="Enter Greeting Message : " />
+		<h:inputText id="input" value="#{indexBean.merchandId}" />
+		<h:commandButton value="Submit" action="#{indexBean.generateReport}" onclick="return check();"/>
+		<h:outputText value="#{indexBean.userInput}"/>
+		
+	</h:form>
+	<h:form id="frff">
+		
+
+					<h:inputText id="inputd" value="#{comercioReportController.entityId}" />
+				
+	
+								<h:inputText id="inputv" value="#{comercioReportController.merchandId}" />	
+				<h:inputText id="reportType" value="#{comercioReportController.formatType}" />	
+		
+		
+		    <h:commandButton value="Submit" action="#{comercioReportController.submit}" />
+		    
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntidadCreateDlg" widgetVar="EntidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEntidadTitle}">
+            <h:form id="EntidadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{entidadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{entidadController.selected.id}" title="#{bundle.CreateEntidadTitle_id}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_referencia}" for="referencia" />
+                        <p:inputText id="referencia" value="#{entidadController.selected.referencia}" title="#{bundle.CreateEntidadTitle_referencia}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_referencia}"/>
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{entidadController.selected.nombre}" title="#{bundle.CreateEntidadTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_nombre}"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_estado}" for="estado" />                        
+                        <p:selectOneRadio id="estado" value="#{entidadController.selected.estado}" title="#{bundle.CreateEntidadTitle_estado}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_estado}">
+				            <f:selectItems value="#{applicationController.estadosEstandar}"
+                                           var="objItem"
+                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+				        </p:selectOneRadio>
+                        
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_pais}" for="pais" />
+                        <p:autoComplete id="pais" value="#{entidadController.selected.pais}" title="#{bundle.CreateClienteTitle_pais}"  maxResults="6" completeMethod="#{applicationController.getCountries}" requiredMessage="#{bundle.CreateEntidadTitle_pais}" />
+                        
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_url}" for="url" />
+                        <p:inputText id="url" value="#{entidadController.selected.url}" title="#{bundle.CreateEntidadTitle_url}" />
+                        <p:outputLabel value="#{bundle.CreateEntidadLabel_contactos}" for="contactos" />                       
+                        
+                        <p:panelGrid columns="1">                   
+	                        <p:inputTextarea id="contactos" value="#{entidadController.selected.contactos}" title="#{bundle.CreateEntidadTitle_contactos}" 
+	                         rows="4" cols="20" counter="displayContactos" maxlength="510" counterTemplate="{0} #{bundle.Characteres_ramaining}" autoResize="false" />
+	    					<h:outputText id="displayContactos"   />
+    					</p:panelGrid> 
+                 	</p:panelGrid>
+                    <p:commandButton actionListener="#{entidadController.create}" value="#{bundle.Save}" update="display,:EntidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'EntidadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EntidadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

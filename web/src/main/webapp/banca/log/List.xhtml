@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions" >
+
+ <ui:composition template="/WEB-INF/templates/template4.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLogTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="box1">
+            <h:form id="LogListForm">
+                <p:panel header="#{bundle.ListLogTitle}">
+                    <p:dataTable id="datalist" value="#{logController.items}" var="item"
+                                 selectionMode="single" selection="#{logController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogTitle_modelo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modelo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogTitle_referencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.referencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogTitle_usuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogTitle_log}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.log}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{logController.prepareCreate}" update=":LogCreateForm" oncomplete="PF('LogCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":LogViewForm" oncomplete="PF('LogViewDialog').show()" disabled="#{empty logController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":LogEditForm" oncomplete="PF('LogEditDialog').show()" disabled="#{empty logController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{logController.destroy}" update=":growl,datalist" disabled="#{empty logController.selected}"/>
+                        
+                           <h:commandLink>
+				                <p:graphicImage library="images" name="icons/excel.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xls" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/pdf.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="pdf" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}"/>
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/csv.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="csv" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+				 
+				            <h:commandLink>
+				                <p:graphicImage library="images" name="icons/xml.png" width="24" class="ui-button ui-widget "/>
+				                <p:dataExporter type="xml" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
+				            </h:commandLink>
+                        
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

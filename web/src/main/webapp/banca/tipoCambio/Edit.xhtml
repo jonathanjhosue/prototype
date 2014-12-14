@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoCambioEditDlg" widgetVar="TipoCambioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoCambioTitle}">
+            <h:form id="TipoCambioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoCambioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_tipoCambioPK_fecha}" for="tipoCambioPK_fecha" />
+                        <p:calendar id="tipoCambioPK_fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{tipoCambioController.selected.tipoCambioPK.fecha}" title="#{bundle.EditTipoCambioTitle_tipoCambioPK_fecha}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_tipoCambioPK_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{tipoCambioController.selected.id}" title="#{bundle.EditTipoCambioTitle_id}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{tipoCambioController.selected.valor}" title="#{bundle.EditTipoCambioTitle_valor}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_valor}"/>
+
+                                                
+                         <p:outputLabel value="#{bundle.EditTipoCambioLabel_moneda1}" for="moneda1" />
+                        <p:selectOneMenu id="moneda1" value="#{tipoCambioController.selected.moneda1}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda1}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
+                                           var="monedaItem"
+                                           itemValue="#{monedaItem}" itemLabel="#{monedaItem.nombre} #{monedaItem.simbolo}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_moneda}" for="moneda2" />
+                        <p:selectOneMenu id="moneda2" value="#{tipoCambioController.selected.moneda2}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
+                                           var="monedaItem"
+                                           itemValue="#{monedaItem}" itemLabel="#{monedaItem.nombre} #{monedaItem.simbolo}"/>
+                        </p:selectOneMenu>
+                        
+                         <p:outputLabel value="#{bundle.EditTipoCambioLabel_admCreacion}"  />                        
+                        <h:outputText value="#{tipoCambioController.selected.admCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+
+                        
+                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_admUsuario}"  />
+                        <h:outputText value="#{tipoCambioController.selected.admUsuario}"/>         
+                       
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoCambioController.update}" value="#{bundle.Save}" update="display,:TipoCambioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoCambioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoCambioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoTransaccionViewDlg" widgetVar="TipoTransaccionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipoTransaccionTitle}">
+            <h:form id="TipoTransaccionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoTransaccionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTipoTransaccionLabel_id}"/>
+                        <h:outputText value="#{tipoTransaccionController.selected.id}" title="#{bundle.ViewTipoTransaccionTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewTipoTransaccionLabel_descripcion}"/>
+                        <h:outputText value="#{tipoTransaccionController.selected.descripcion}" title="#{bundle.ViewTipoTransaccionTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewTipoTransaccionLabel_admCreacion}"/>
+                        <h:outputText value="#{tipoTransaccionController.selected.admCreacion}" title="#{bundle.ViewTipoTransaccionTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoTransaccionLabel_admActualizacion}"/>
+                        <h:outputText value="#{tipoTransaccionController.selected.admActualizacion}" title="#{bundle.ViewTipoTransaccionTitle_admActualizacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTipoTransaccionLabel_admUsuario}"/>
+                        <h:outputText value="#{tipoTransaccionController.selected.admUsuario}" title="#{bundle.ViewTipoTransaccionTitle_admUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TipoTransaccionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

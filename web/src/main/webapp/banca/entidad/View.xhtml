@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntidadViewDlg" widgetVar="EntidadViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEntidadTitle}">
+            <h:form id="EntidadViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entidadController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEntidadLabel_id}"/>
+                        <h:outputText value="#{entidadController.selected.id}" title="#{bundle.ViewEntidadTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_referencia}"/>
+                        <h:outputText value="#{entidadController.selected.referencia}" title="#{bundle.ViewEntidadTitle_referencia}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_nombre}"/>
+                        <h:outputText value="#{entidadController.selected.nombre}" title="#{bundle.ViewEntidadTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_estado}"/>
+                        <h:outputText value="#{entidadController.selected.estado}" title="#{bundle.ViewEntidadTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_pais}"/>
+                        <h:outputText value="#{entidadController.selected.pais}" title="#{bundle.ViewEntidadTitle_pais}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_url}"/>
+                        <h:outputText value="#{entidadController.selected.url}" title="#{bundle.ViewEntidadTitle_url}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_contactos}"/>
+                        <h:outputText value="#{entidadController.selected.contactos}" title="#{bundle.ViewEntidadTitle_contactos}"/>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_admCreacion}"/>
+                        <h:outputText value="#{entidadController.selected.admCreacion}" title="#{bundle.ViewEntidadTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_admActualizacion}"/>
+                        <h:outputText value="#{entidadController.selected.admActualizacion}" title="#{bundle.ViewEntidadTitle_admActualizacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEntidadLabel_admUsuario}"/>
+                        <h:outputText value="#{entidadController.selected.admUsuario}" title="#{bundle.ViewEntidadTitle_admUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EntidadViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

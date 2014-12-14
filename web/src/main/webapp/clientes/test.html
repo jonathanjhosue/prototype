@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript" src="/prototype-web/javax.faces.resource/angular1.3.1.min.js.xhtml?ln=angular"></script>
+<script type="text/javascript" src="/prototype-web/javax.faces.resource/ClientCtrl.js.xhtml?ln=angular"></script>
+<script>
+
+</script>
+
+</head>
+<body ng-controller="ClientCtrl">
+Name:<input ng-model="name" type="text"/>
+Hello {{name}}
+
+
+  
+    <form>
+       <label for="entity">Entity Id</label> <input type="text" name="entity" ng-model="accountForm.entity"/> <br /> 
+       <label for="account">Client Identity</label> <input type="text" name="client" ng-model="accountForm.client"/><br /> 
+       
+       <button ng-click="searchClient()">Search</button>
+    </form>
+    {{accountForm.client}}
+    
+    <h2 >Cliente</h2>   	  		
+   	  	Id: {{clientData.id}}  <br/>
+   	  	Nombre: {{clientData.name}}  <br/>
+   	  	Identificador: {{clientData.identity}}  <br/>   	  	
+   	  	Tipo Identificación: {{clientData.identityType}}  <br/>
+   	  	Tipo Cliente: {{clientData.clientType}}  <br/>   	  		
+   	  	Pais: {{clientData.country}}  <br/>
+   	  	Ciudad: {{clientData.city}}  <br/>
+   	  	Dirección: {{clientData.address}}  <br/>   	  	
+
+</body>
+</html>

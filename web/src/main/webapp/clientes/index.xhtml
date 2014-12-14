@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.org/ui"
+   template="/WEB-INF/templates/client_template.xhtml">
+   
+
+  
+   <ui:define name="title">Sistema de Actualización e Integración</ui:define>
+   
+   
+   <ui:define name="box1">
+   
+    <h:outputScript library="angular" name="ClientCtrl.js" target="head"/>
+   <!--h:outputScript library="angular" name="AccountCtrl.js" target="head"/-->
+	    <h2>Buscar cliente</h2>
+	    <div class="clientData" ng-app="myApp" >
+	    <div ng-controller="ClientCtrl">  
+       <form id="formClient" target="frameCode" action="http://localhost:8080/prototype-web/rest/clientWs/search/json" method="post">
+       <label for="entity">Entity Id</label> <input type="text" name="entity" ng-model="formClient.entity"/> <br /> 
+       <label for="client">Client Identity</label> <input type="text" name="client" ng-model="formClient.client"/><br /> 
+<br />
+		<a href="#" class="button" ng-click="searchClient()"><span><span>Buscar</span></span></a>
+		<a href="#" class="button" ng-click="getClientResponse('xml')"><span><span>XML</span></span></a>
+		<a href="#" class="button" ng-click="getClientResponse('json')"><span><span>JSON</span></span></a>		
+		</form>
+		
+		<h2>Información de Cliente</h2>  
+    	<p class="pad_bot1">	  		
+	   	  	<label>Id:</label>                   <span>{{clientData.id}}  </span><br/>
+	   	  	<label>Nombre:</label>               <span>{{clientData.name}}  </span><br/>
+	   	  	<label>Identificador:</label>        <span>{{clientData.identity}}  </span><br/>
+	   	  	<label>Tipo Identificación:</label>  <span>{{clientData.identityType}}  </span><br/>
+	   	  	<label>Tipo Cliente:</label>         <span>{{clientData.clientType}} </span><br/>
+	   	  	<label>Pais:</label>                 <span>{{clientData.country}}  </span><br/>
+	   	  	<label>Ciudad:</label>               <span>{{clientData.city}}  </span><br/>
+	   	  	<label>Dirección:</label>            <span>{{clientData.address}} </span><br/>
+	   	  	<label>Contactos:</label>            <span>{{clientData.contact}} </span><br/>
+   	  
+		</p>
+		<p:graphicImage library="design" class="img" name="images/img1.png" alt=""/>		
+		
+		<p>{{UrlService}}</p>
+		    <iframe id="frameCode" name="frameCode" src=""></iframe>
+					
+	</div>
+	
+	</div>
+		
+	
+   </ui:define>
+   
+    <ui:define name="box2">
+    
+    	  
+
+		
+		
+		<p:graphicImage library="design" class="img" name="images/img2.png" alt=""/>						
+	
+   </ui:define>
+   
+   <ui:define name="box3">
+      
+		<h2>Contactos</h2>
+		<p class="pad_bot1">
+			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
+		</p>
+		<a href="#" class="button"><span><span>Leer Más</span></span></a>
+		<p:graphicImage library="design" class="img" name="images/img3.png" alt=""/>						
+	
+   </ui:define>
+   
+   
+    <ui:define name="sidebarleft">
+      
+      
+      
+		<h2>Testimonials</h2>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>
+			</figure>
+			<span class="color1">Michael Donovan</span><br/>
+			Sit amet, ectetuer adgipi scing elit.<a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img2.jpg" alt=""/>
+			</figure>
+			<span class="color1">Jane White</span><br/>
+			Neque porro quisquahm est, qui dolorem. <a href="#">More</a>
+		</div>
+		<div class="wrapper pad_bot1">
+			<figure>
+			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img3.jpg" alt=""/>
+			</figure>
+			<span class="color1">James Doe</span><br/>
+			Quis autem vel eum iure reprehenderit. <a href="#">More</a>
+		</div>						
+
+   </ui:define>
+   
+   <ui:define name="maincontent">
+
+
+   
+   
+
+
+   </ui:define>
+   
+</ui:composition>

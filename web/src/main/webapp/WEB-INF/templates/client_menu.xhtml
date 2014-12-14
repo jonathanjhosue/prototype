@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<nav xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:p="http://primefaces.org/ui">
+
+
+<div id="menu1">
+<p:megaMenu   orientation="#{megaMenuView.orientation}" style="margin-top:20px;" >
+ 	
+ 	<p:menuitem value="Inicio" url="/clientes/index.xhtml" icon="ui-icon-home" />    
+ 
+    <p:submenu label="WebService" icon="ui-icon-document"> 
+     	<p:column>
+     	 	<p:submenu label="Clientes">
+     	 		<p:menuitem value="Clientes Info" url="/clientes/index.xhtml"  />    
+                <p:menuitem value="Cuentas y Estados de Cuenta" url="/clientes/estadocuenta.xhtml" />               
+            </p:submenu>        
+        </p:column> 
+        
+        <p:column>
+     	 	<p:submenu label="Comercios">
+                <p:menuitem value="Transacciones" url="/clientes/transaccion.xhtml" />
+                <p:menuitem value="Comercios" url="/comercios/index.xhtml" />                  
+            </p:submenu>        
+        </p:column> 
+    </p:submenu>
+    
+    <p:submenu label="Gestiones" icon="ui-icon-clock">
+ 
+        <p:column>
+            <p:submenu label="Tarjetahabiente">
+                <p:menuitem value="Cambio de clave" url="#" />
+                <p:menuitem value="Solicitud Tarjeta" url="#" />
+                <p:menuitem value="Transferencias" url="#" />
+                <p:menuitem value="Otros" url="#" />                
+            </p:submenu>            
+                   
+        </p:column>
+      
+    </p:submenu>
+ 
+    <p:submenu label="Pagos" icon="ui-icon-pencil">
+        <p:column>
+            <p:submenu label="Servicios Públicos">
+                <p:menuitem value="ICE" url="#" />
+                <p:menuitem value="Kolbi" url="#" />              
+            </p:submenu>
+            <p:submenu label="Universidades">
+                <p:menuitem value="UNED" url="#" />
+                <p:menuitem value="UCR" url="#" />
+            </p:submenu>
+        </p:column>
+ 
+        <p:column>
+            <p:submenu label="Instituciones">
+                <p:menuitem value="INS" url="#" />
+                <p:menuitem value="CCSS" url="#" />
+            </p:submenu>
+            <p:submenu label="Otros">
+                <p:menuitem value="Marchamo" url="#" />
+                <p:menuitem value="Registro" url="#" />
+                <p:menuitem value="Trámites" url="#" />
+            </p:submenu>
+        </p:column>        
+    </p:submenu>  
+    
+     <p:submenu label="Enlaces" icon="ui-icon-arrowreturnthick-1-e">
+ 
+        <p:column>
+            <p:submenu label="Tarjetahabiente">
+            	<p:menuitem value="Banca" url="/banca/index.xhtml" icon="ui-icon-home" />
+             	<p:menuitem value="Comercio" url="/comercios/index.xhtml" icon="ui-icon-cart" />        
+             	<p:menuitem value="Clientes" url="/clientes/index.xhtml" icon="ui-icon-person" />
+    			
+         
+            </p:submenu>            
+                   
+        </p:column>
+      
+    </p:submenu>
+    
+   
+    <p:menuitem value="Salir" url="#" icon="ui-icon-close" />
+</p:megaMenu>
+
+</div>
+</nav>
