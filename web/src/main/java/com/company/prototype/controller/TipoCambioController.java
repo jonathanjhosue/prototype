@@ -4,6 +4,7 @@ import com.company.prototype.model.entity.TipoCambio;
 import com.company.prototype.controller.util.JsfUtil;
 import com.company.prototype.controller.util.JsfUtil.PersistAction;
 import com.company.prototype.service.TipoCambioFacade;
+import com.company.prototype.util.ControllerUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -91,6 +92,7 @@ public class TipoCambioController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
+        	selected.setAdmUsuario(ControllerUtils.getSessionUser(FacesContext.getCurrentInstance()));
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {

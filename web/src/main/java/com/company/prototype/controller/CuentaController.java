@@ -4,6 +4,7 @@ import com.company.prototype.model.entity.Cuenta;
 import com.company.prototype.controller.util.JsfUtil;
 import com.company.prototype.controller.util.JsfUtil.PersistAction;
 import com.company.prototype.service.CuentaFacade;
+import com.company.prototype.util.ControllerUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -90,6 +91,7 @@ public class CuentaController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
+        	selected.setAdmUsuario(ControllerUtils.getSessionUser(FacesContext.getCurrentInstance()));
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
@@ -149,7 +151,7 @@ public class CuentaController implements Serializable {
             String values[] = value.split(SEPARATOR_ESCAPED);
             key = new com.company.prototype.model.entity.CuentaPK();
             key.setNumero(values[0]);
-            key.setEntidadId(values[1]);
+            key.setEntidadId(new Long(values[1]));
             return key;
         }
 

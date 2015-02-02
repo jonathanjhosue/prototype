@@ -37,6 +37,7 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
     @Override
     public void create(Cuenta entity) {
     	entity.setAdmCreacion(new Date());
+    	entity.setAdmActualizacion(new Date());
     	super.create(entity);
         
     }
@@ -44,6 +45,9 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
     @Override
     public Cuenta edit(Cuenta entity) {
     	entity.setAdmActualizacion(new Date());
+    	if(entity.getAdmCreacion()==null){
+    		entity.setAdmCreacion(new Date());
+    	}
         return super.edit(entity);
     }
     

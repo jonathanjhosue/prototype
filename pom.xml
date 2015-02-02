@@ -59,9 +59,9 @@
            <!-- dependencies versions -->
         <version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
         
-        <version.hibernate.validator>5.1.1.Final</version.hibernate.validator>      
+        <version.hibernate.validator>5.1.3.Final</version.hibernate.validator>      
         
-        <version.primefaces>5.0</version.primefaces>
+        <version.primefaces>5.1</version.primefaces>
         <version.apache.poi>3.10-FINAL</version.apache.poi>
         
         <version.baseproject>0.0.1-SNAPSHOT</version.baseproject>       

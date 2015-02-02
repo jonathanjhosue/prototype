@@ -12,8 +12,6 @@
             <h:form id="ComercioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="4" rendered="#{comercioController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateComercioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{comercioController.selected.id}" title="#{bundle.CreateComercioTitle_id}" required="true" requiredMessage="#{bundle.CreateComercioRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateComercioLabel_identificacion}" for="identificacion" />
                         <p:inputText id="identificacion" value="#{comercioController.selected.identificacion}" title="#{bundle.CreateComercioTitle_identificacion}" required="true" requiredMessage="#{bundle.CreateComercioRequiredMessage_identificacion}"/>
                         <p:outputLabel value="#{bundle.CreateComercioLabel_referencia}" for="referencia" />
@@ -25,7 +23,7 @@
                         <p:selectOneRadio id="estado" value="#{comercioController.selected.estado}" title="#{bundle.CreateComercioTitle_estado}" required="true" requiredMessage="#{bundle.CreateComercioRequiredMessage_estado}">
 				            <f:selectItems value="#{applicationController.estadosEstandar}"
                                            var="objItem"
-                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
 				        </p:selectOneRadio>   
 				        <p:outputLabel value=""  /> <h:outputText value=""  />
                         

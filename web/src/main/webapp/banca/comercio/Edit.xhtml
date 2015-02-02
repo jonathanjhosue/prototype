@@ -12,8 +12,8 @@
             <h:form id="ComercioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="4" rendered="#{comercioController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditComercioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{comercioController.selected.id}" title="#{bundle.EditComercioTitle_id}" required="true" requiredMessage="#{bundle.EditComercioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditComercioLabel_id}"  />
+                        <p:outputLabel id="id" value="#{comercioController.selected.id}" title="#{bundle.EditComercioTitle_id}" />
                         <p:outputLabel value="#{bundle.EditComercioLabel_identificacion}" for="identificacion" />
                         <p:inputText id="identificacion" value="#{comercioController.selected.identificacion}" title="#{bundle.EditComercioTitle_identificacion}" required="true" requiredMessage="#{bundle.EditComercioRequiredMessage_identificacion}"/>
                         <p:outputLabel value="#{bundle.EditComercioLabel_referencia}" for="referencia" />

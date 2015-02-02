@@ -19,7 +19,7 @@
                         <p:selectOneRadio id="estado" value="#{cuentaController.selected.estado}" title="#{bundle.CreateCuentaTitle_estado}" required="true" requiredMessage="#{bundle.CreateCuentaRequiredMessage_estado}">
 				            <f:selectItems value="#{applicationController.estadosEstandar}"
                                            var="objItem"
-                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
 				        </p:selectOneRadio> 
                         
                         <p:outputLabel value="#{bundle.CreateCuentaLabel_tipoCuenta}" for="tipoCuenta" />

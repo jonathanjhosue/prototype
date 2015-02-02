@@ -38,6 +38,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
     @Override
     public void create(Cliente entity) {
     	entity.setAdmCreacion(new Date());
+    	entity.setAdmActualizacion(new Date());
     	super.create(entity);
         
     }
@@ -45,6 +46,10 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
     @Override
     public Cliente edit(Cliente entity) {
     	entity.setAdmActualizacion(new Date());
+    	if(entity.getAdmCreacion()==null){
+    		entity.setAdmCreacion(new Date());
+    	}
+    	
         return super.edit(entity);
     }
     

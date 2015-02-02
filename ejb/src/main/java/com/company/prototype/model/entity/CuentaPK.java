@@ -28,12 +28,12 @@ public class CuentaPK implements Serializable {
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "entidad_id")
-    private String entidadId;
+    private Long entidadId;
 
     public CuentaPK() {
     }
 
-    public CuentaPK(String numero, String entidadId) {
+    public CuentaPK(String numero, Long entidadId) {
         this.numero = numero;
         this.entidadId = entidadId;
     }
@@ -46,11 +46,11 @@ public class CuentaPK implements Serializable {
         this.numero = numero;
     }
 
-    public String getEntidadId() {
+    public Long getEntidadId() {
         return entidadId;
     }
 
-    public void setEntidadId(String entidadId) {
+    public void setEntidadId(Long entidadId) {
         this.entidadId = entidadId;
     }
 
@@ -80,7 +80,7 @@ public class CuentaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.company.prototype.model.entity.CuentaPK[ numero=" + numero + ", entidadId=" + entidadId + " ]";
+        return entidadId + " , "+numero;
     }
     
 }

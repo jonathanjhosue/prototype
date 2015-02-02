@@ -36,6 +36,7 @@ public class EntidadFacade extends AbstractFacade<Entidad> {
     @Override
     public void create(Entidad entity) {
     	entity.setAdmCreacion(new Date());
+    	entity.setAdmActualizacion(new Date());
     	super.create(entity);
         
     }
@@ -43,6 +44,9 @@ public class EntidadFacade extends AbstractFacade<Entidad> {
     @Override
     public Entidad edit(Entidad entity) {
     	entity.setAdmActualizacion(new Date());
+    	if(entity.getAdmCreacion()==null){
+    		entity.setAdmCreacion(new Date());
+    	}    	
         return super.edit(entity);
     }
     

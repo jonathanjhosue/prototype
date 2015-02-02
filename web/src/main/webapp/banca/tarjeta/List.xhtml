@@ -163,9 +163,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTarjetaTitle_entidadId}"/>
+                                <h:outputText value="#{bundle.ListTarjetaTitle_cuenta}"/>
                             </f:facet>
-                            <h:outputText value="#{item.entidadId}"/>
+                            <h:outputText value="#{item.cuenta}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tarjetaController.prepareCreate}" update=":TarjetaCreateForm" oncomplete="PF('TarjetaCreateDialog').show()"/>

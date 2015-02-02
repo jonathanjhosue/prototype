@@ -64,7 +64,7 @@ public class TipoComision implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
-    private Character estado;
+    private String estado;
     @Basic(optional = false)
     @NotNull
     @Column(name = "adm_creacion")
@@ -91,7 +91,7 @@ public class TipoComision implements Serializable {
         this.id = id;
     }
 
-    public TipoComision(Integer id, Date fecha, Character estado, Date admCreacion, String admUsuario) {
+    public TipoComision(Integer id, Date fecha, String estado, Date admCreacion, String admUsuario) {
         this.id = id;
         this.fecha = fecha;
         this.estado = estado;
@@ -131,11 +131,11 @@ public class TipoComision implements Serializable {
         this.porcentaje = porcentaje;
     }
 
-    public Character getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Character estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

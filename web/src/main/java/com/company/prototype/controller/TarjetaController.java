@@ -4,6 +4,7 @@ import com.company.prototype.model.entity.Tarjeta;
 import com.company.prototype.controller.util.JsfUtil;
 import com.company.prototype.controller.util.JsfUtil.PersistAction;
 import com.company.prototype.service.TarjetaFacade;
+import com.company.prototype.util.ControllerUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -88,7 +89,8 @@ public class TarjetaController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
-            setEmbeddableKeys();
+        	selected.setAdmUsuario(ControllerUtils.getSessionUser(FacesContext.getCurrentInstance()));
+            setEmbeddableKeys();selected.setAdmUsuario(ControllerUtils.getSessionUser(FacesContext.getCurrentInstance()));
             try {
                 if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);

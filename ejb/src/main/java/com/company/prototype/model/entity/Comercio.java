@@ -9,10 +9,13 @@ package com.company.prototype.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -52,7 +55,7 @@ public class Comercio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Basic(optional = false)
@@ -71,7 +74,7 @@ public class Comercio implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
-    private Character estado;
+    private String estado;
     @Size(max = 45)
     @Column(name = "pais")
     private String pais;
@@ -114,7 +117,7 @@ public class Comercio implements Serializable {
         this.id = id;
     }
 
-    public Comercio(Long id, String identificacion, String nombre, Character estado, Date admCreacion, String admUsuario) {
+    public Comercio(Long id, String identificacion, String nombre, String estado, Date admCreacion, String admUsuario) {
         this.id = id;
         this.identificacion = identificacion;
         this.nombre = nombre;
@@ -155,11 +158,11 @@ public class Comercio implements Serializable {
         this.nombre = nombre;
     }
 
-    public Character getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Character estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

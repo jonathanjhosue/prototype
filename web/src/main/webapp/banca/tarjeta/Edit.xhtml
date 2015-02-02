@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tarjetaController.selected != null}">
                         <p:outputLabel value="#{bundle.EditTarjetaLabel_numero}" for="numero" />
-                        <p:inimpoputMask id="numero" value="#{tarjetaController.selected.numero}" mask="9999999999999999" title="#{bundle.EditTarjetaTitle_numero}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_numero}"/>
+                        <p:inputMask id="numero" value="#{tarjetaController.selected.numero}" mask="9999999999999999" title="#{bundle.EditTarjetaTitle_numero}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_numero}"/>
                         <p:outputLabel value="#{bundle.EditTarjetaLabel_ultimos4}" for="ultimos4" />
                         <p:inputMask id="ultimos4" value="#{tarjetaController.selected.ultimos4}" mask="9999" title="#{bundle.EditTarjetaTitle_ultimos4}" />
                         <p:outputLabel value="#{bundle.EditTarjetaLabel_tipoTarjeta}" for="tipoTarjeta" />
@@ -27,6 +27,10 @@
                         <p:outputLabel value="#{bundle.EditTarjetaLabel_marca}" for="marca" />
                         <p:inputText id="marca" value="#{tarjetaController.selected.marca}" title="#{bundle.EditTarjetaTitle_marca}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_marca}"/>
                        
+                        <p:outputLabel value="#{bundle.EditTarjetaLabel_fechaVencimiento}" for="fechaVencimiento" />
+                        <p:calendar id="fechaVencimiento" pattern="dd/MM/yyyy" value="#{tarjetaController.selected.fechaVencimiento}" title="#{bundle.EditTarjetaTitle_fechaVencimiento}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_fechaVencimiento}" showOn="button"/>
+                       
+                       
                         <p:outputLabel value="#{bundle.EditTarjetaLabel_clienteId}" for="clienteId" />
                         <p:selectOneMenu id="clienteId" value="#{tarjetaController.selected.clienteId}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_clienteId}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -36,13 +40,13 @@
                         </p:selectOneMenu>
                         
                         
-                        <p:outputLabel value="#{bundle.EditTarjetaLabel_entidadId}" for="entidadId" />
-                        <p:selectOneMenu id="entidadId" value="#{tarjetaController.selected.entidadId}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_entidadId}">
+                        <p:outputLabel value="#{bundle.EditTarjetaLabel_cuenta}" for="cuenta" />
+                        <p:selectOneMenu id="cuenta" value="#{tarjetaController.selected.cuenta}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_cuenta}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{entidadController.itemsAvailableSelectOne}"
-                                           var="entidadIdItem"
-                                           itemValue="#{entidadIdItem}" itemLabel="#{entidadIdItem.id} || #{entidadIdItem.nombre}"/>
-                        </p:selectOneMenu>
+                            <f:selectItems value="#{cuentaController.itemsAvailableSelectOne}"
+                                           var="cuentaItem"
+                                           itemValue="#{cuentaItem}" itemLabel="#{cuentaItem}"/>
+                        </p:selectOneMenu> 
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tarjetaController.update}" value="#{bundle.Save}" update="display,:TarjetaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TarjetaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="TarjetaEditDialog.hide()"/>

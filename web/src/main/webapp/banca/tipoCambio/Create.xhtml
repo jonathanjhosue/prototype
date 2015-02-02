@@ -14,8 +14,6 @@
                     <p:panelGrid columns="2" rendered="#{tipoCambioController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateTipoCambioLabel_tipoCambioPK_fecha}" for="tipoCambioPK_fecha" />
                         <p:calendar id="tipoCambioPK_fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{tipoCambioController.selected.tipoCambioPK.fecha}" title="#{bundle.EditTipoCambioTitle_tipoCambioPK_fecha}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_tipoCambioPK_fecha}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateTipoCambioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{tipoCambioController.selected.id}" title="#{bundle.CreateTipoCambioTitle_id}" required="true" requiredMessage="#{bundle.CreateTipoCambioRequiredMessage_id}"/>
                         
                         <p:outputLabel value="#{bundle.CreateTipoCambioLabel_moneda1}" for="moneda1" />
                         <p:selectOneMenu id="moneda1" value="#{tipoCambioController.selected.moneda1}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda1}">
@@ -27,8 +25,8 @@
                         <p:outputLabel value="#{bundle.CreateTipoCambioLabel_moneda}" for="moneda2" />
                         <p:selectOneMenu id="moneda2" value="#{tipoCambioController.selected.moneda2}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda}">
                             <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
-                                           var="monedaItem"
-                                           itemValue="#{monedaItem}" itemLabel="#{monedaItem.id} #{monedaItem.simbolo}"/>
+                                           var="moneda2Item"
+                                           itemValue="#{moneda2Item}" itemLabel="#{moneda2Item.id} #{moneda2Item.simbolo}"/>
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreateTipoCambioLabel_valor}" for="valor" />

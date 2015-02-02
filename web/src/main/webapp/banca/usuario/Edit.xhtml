@@ -18,16 +18,29 @@
                         <p:inputText id="usuarioPK_referencia" value="#{usuarioController.selected.usuarioPK.referencia}" title="#{bundle.EditUsuarioTitle_usuarioPK_referencia}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuarioPK_referencia}"/>
                         <p:outputLabel value="#{bundle.EditUsuarioLabel_password}" for="password" />
                         <p:inputText id="password" value="#{usuarioController.selected.password}" title="#{bundle.EditUsuarioTitle_password}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_password}"/>
+
                         <p:outputLabel value="#{bundle.EditUsuarioLabel_estado}" for="estado" />
-                        <p:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.EditUsuarioTitle_estado}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_estado}"/>
+                        <p:selectOneRadio id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.EditUsuarioTitle_estado}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_estado}">
+				        	<f:selectItems value="#{applicationController.estadosEstandar}"
+                                           var="objItem"
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
+				        </p:selectOneRadio>
+                        
                         <p:outputLabel value="#{bundle.EditUsuarioLabel_rol}" for="rol" />
                         <p:inputText id="rol" value="#{usuarioController.selected.rol}" title="#{bundle.EditUsuarioTitle_rol}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_rol}"/>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_admCreacion}" for="admCreacion" />
-                        <p:calendar id="admCreacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{usuarioController.selected.admCreacion}" title="#{bundle.EditUsuarioTitle_admCreacion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_admCreacion}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_admActualizacion}" for="admActualizacion" />
-                        <p:calendar id="admActualizacion" pattern="dd/MM/yyyy HH:mm:ss" value="#{usuarioController.selected.admActualizacion}" title="#{bundle.EditUsuarioTitle_admActualizacion}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_admUsuario}" for="admUsuario" />
-                        <p:inputText id="admUsuario" value="#{usuarioController.selected.admUsuario}" title="#{bundle.EditUsuarioTitle_admUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_admUsuario}"/>
+ 
+ 						
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_admCreacion}"/>
+                        <h:outputText value="#{usuarioController.selected.admCreacion}" title="#{bundle.ViewUsuarioTitle_admCreacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_admActualizacion}"/>
+                        <h:outputText value="#{usuarioController.selected.admActualizacion}" title="#{bundle.ViewUsuarioTitle_admActualizacion}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_admUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.admUsuario}" title="#{bundle.ViewUsuarioTitle_admUsuario}"/>
+                   
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>

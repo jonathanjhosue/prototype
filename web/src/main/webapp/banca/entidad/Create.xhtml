@@ -11,9 +11,7 @@
         <p:dialog id="EntidadCreateDlg" widgetVar="EntidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEntidadTitle}">
             <h:form id="EntidadCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="4" rendered="#{entidadController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEntidadLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{entidadController.selected.id}" title="#{bundle.CreateEntidadTitle_id}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_id}"/>
+                    <p:panelGrid columns="4" rendered="#{entidadController.selected != null}">                       
                         <p:outputLabel value="#{bundle.CreateEntidadLabel_referencia}" for="referencia" />
                         <p:inputText id="referencia" value="#{entidadController.selected.referencia}" title="#{bundle.CreateEntidadTitle_referencia}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_referencia}"/>
                         <p:outputLabel value="#{bundle.CreateEntidadLabel_nombre}" for="nombre" />
@@ -23,7 +21,7 @@
                         <p:selectOneRadio id="estado" value="#{entidadController.selected.estado}" title="#{bundle.CreateEntidadTitle_estado}" required="true" requiredMessage="#{bundle.CreateEntidadRequiredMessage_estado}">
 				            <f:selectItems value="#{applicationController.estadosEstandar}"
                                            var="objItem"
-                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
 				        </p:selectOneRadio>
                         
                         <p:outputLabel value="#{bundle.CreateEntidadLabel_pais}" for="pais" />

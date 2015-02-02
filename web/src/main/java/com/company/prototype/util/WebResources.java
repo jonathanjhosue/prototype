@@ -41,5 +41,24 @@ public class WebResources {
     public FacesContext produceFacesContext() {
         return FacesContext.getCurrentInstance();
     }
+    
+    /*
+    public static Login getCurrentUser() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = fc.getExternalContext();
+        if (externalContext.getUserPrincipal() == null){
+            logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!current principal is null"); 
+        }
+        else{ 
+            Integer id = Integer.parseInt(externalContext.getUserPrincipal().getName());
+            logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LOGGED USER "+ id); 
+            try {
+                currentUser = getLoginService().getLoginById(id);
+            }
+            catch (Exception ex) {
+            } 
+        } 
+        return currentUser;
+    }*/
 
 }

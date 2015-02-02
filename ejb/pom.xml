@@ -95,6 +95,13 @@
     	  <!-- Provided as we use the Infinispan provided by Wildfly -->
     	  <scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox</artifactId>
+			<scope>provided</scope>
+			<version>4.0.21.Final</version>
+		</dependency>
 
 
         <!-- Optional, but highly recommended -->

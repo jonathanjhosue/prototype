@@ -15,6 +15,8 @@ import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -51,10 +53,11 @@ public class Entidad implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@NotNull
+    //@Size(min = 1, max = 20)
     @Column(name = "id")
-    private String id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -68,7 +71,7 @@ public class Entidad implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
-    private Character estado;
+    private String estado;
     @Size(max = 45)
     @Column(name = "pais")
     private String pais;
@@ -95,19 +98,19 @@ public class Entidad implements Serializable {
     private List<Cuenta> cuentaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "entidadId")
     private List<Cliente> clienteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "entidadId")
-    private List<Tarjeta> tarjetaList;
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "entidadId")
+    private List<Tarjeta> tarjetaList;*/
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "entidadId")
     private List<Cierre> cierreList;
 
     public Entidad() {
     }
 
-    public Entidad(String id) {
+    public Entidad(Long id) {
         this.id = id;
     }
 
-    public Entidad(String id, String referencia, String nombre, Character estado, Date admCreacion, String admUsuario) {
+    public Entidad(Long id, String referencia, String nombre, String estado, Date admCreacion, String admUsuario) {
         this.id = id;
         this.referencia = referencia;
         this.nombre = nombre;
@@ -116,11 +119,11 @@ public class Entidad implements Serializable {
         this.admUsuario = admUsuario;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -140,11 +143,11 @@ public class Entidad implements Serializable {
         this.nombre = nombre;
     }
 
-    public Character getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Character estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
@@ -214,14 +217,14 @@ public class Entidad implements Serializable {
         this.clienteList = clienteList;
     }
 
-    @XmlTransient
+    /*@XmlTransient
     public List<Tarjeta> getTarjetaList() {
         return tarjetaList;
     }
 
     public void setTarjetaList(List<Tarjeta> tarjetaList) {
         this.tarjetaList = tarjetaList;
-    }
+    }*/
 
     @XmlTransient
     public List<Cierre> getCierreList() {

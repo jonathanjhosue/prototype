@@ -122,7 +122,7 @@ public class Cuenta implements Serializable {
         this.admUsuario = admUsuario;
     }
 
-    public Cuenta(String numero, String entidadId) {
+    public Cuenta(String numero, Long entidadId) {
         this.cuentaPK = new CuentaPK(numero, entidadId);
     }
 
@@ -288,7 +288,7 @@ public class Cuenta implements Serializable {
 
     @Override
     public String toString() {
-        return "com.company.prototype.model.entity.Cuenta[ cuentaPK=" + cuentaPK + " ]";
+        return ""+cuentaPK;
     }
     
 }

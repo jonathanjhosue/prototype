@@ -43,6 +43,9 @@ public class ComercioFacade extends AbstractFacade<Comercio> {
     @Override
     public Comercio edit(Comercio entity) {
     	entity.setAdmActualizacion(new Date());
+    	if(entity.getAdmCreacion()==null){
+    		entity.setAdmCreacion(new Date());
+    	}
         return super.edit(entity);
     }
     

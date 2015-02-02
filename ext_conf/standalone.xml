@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
-<server xmlns="urn:jboss:domain:2.1">
+<server xmlns="urn:jboss:domain:2.2">
 
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
@@ -113,9 +113,9 @@
             <logger category="jacorb.config">
                 <level name="ERROR"/>
             </logger>
-	    <logger category="org.jboss.security">
-		<level name="TRACE"/>
-	    </logger>
+            <logger category="org.jboss.security">
+                <level name="TRACE"/>
+            </logger>
             <root-logger>
                 <level name="INFO"/>
                 <handlers>
@@ -341,20 +341,18 @@
                         <policy-module code="Delegating" flag="required"/>
                     </authorization>
                 </security-domain>
-		
-		
-		<security-domain name="DBLogin">
-		  <authentication>
-		    <login-module code="Database" flag="required">
-		    <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
-		    <module-option name="principalsQuery" value="select password from usuarios where usuario=?"/>
-		    <module-option name="rolesQuery" value="select rol,'Roles' from usuarios where usuario=?"/>
-		    </login-module>
-		  </authentication>
-		</security-domain>
-
-		
-		
+                <security-domain name="DBLogin">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:jboss/datasources/ExampleDS"/>
+                            <module-option name="principalsQuery" value="select password from usuarios where estado='A' and usuario=?"/>
+                            <module-option name="rolesQuery" value="select rol,'Roles' from usuarios where usuario=?"/>
+                            <module-option name="password-stacking" value="useFirstPass"/>
+                            <module-option name="hashAlgorithm" value="MD5"/>
+                            <module-option name="hashEncoding" value="base64"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:transactions:2.0">
@@ -365,7 +363,7 @@
             </core-environment>
             <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+        <subsystem xmlns="urn:jboss:domain:undertow:1.2">
             <buffer-cache name="default"/>
             <server name="default-server">
                 <http-listener name="default" socket-binding="http"/>
@@ -377,6 +375,7 @@
             </server>
             <servlet-container name="default">
                 <jsp-config/>
+                <websockets/>
             </servlet-container>
             <handlers>
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>

@@ -9,11 +9,14 @@ package com.company.prototype.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -52,6 +55,7 @@ public class TipoCambio implements Serializable {
     @EmbeddedId
     protected TipoCambioPK tipoCambioPK;
     @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
     @Basic(optional = false)
@@ -160,7 +164,7 @@ public class TipoCambio implements Serializable {
         return moneda2;
     }
 
-    public void setMoneda(Moneda moneda) {
+    public void setMoneda2(Moneda moneda) {
         this.moneda2 = moneda2;
     }
 

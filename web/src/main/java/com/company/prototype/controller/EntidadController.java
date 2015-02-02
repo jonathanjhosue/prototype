@@ -19,6 +19,7 @@ import com.company.prototype.controller.util.JsfUtil;
 import com.company.prototype.controller.util.JsfUtil.PersistAction;
 import com.company.prototype.model.entity.Entidad;
 import com.company.prototype.service.EntidadFacade;
+import com.company.prototype.util.ControllerUtils;
 
 @Named("entidadController")
 @SessionScoped
@@ -88,6 +89,7 @@ public class EntidadController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
+        	selected.setAdmUsuario(ControllerUtils.getSessionUser(FacesContext.getCurrentInstance()));
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
@@ -114,7 +116,7 @@ public class EntidadController implements Serializable {
         }
     }
 
-    public Entidad getEntidad(java.lang.String id) {
+    public Entidad getEntidad(java.lang.Long id) {
         return getFacade().find(id);
     }
 
@@ -139,9 +141,9 @@ public class EntidadController implements Serializable {
             return controller.getEntidad(getKey(value));
         }
 
-        java.lang.String getKey(String value) {
-            java.lang.String key;
-            key = value;
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = new Long(value);
             return key;
         }
 
@@ -158,7 +160,7 @@ public class EntidadController implements Serializable {
             }
             if (object instanceof Entidad) {
                 Entidad o = (Entidad) object;
-                return getStringKey(o.getId());
+                return getStringKey(o.getId().toString());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Entidad.class.getName()});
                 return null;

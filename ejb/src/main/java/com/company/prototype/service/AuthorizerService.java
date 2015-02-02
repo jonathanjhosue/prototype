@@ -275,7 +275,7 @@ public class AuthorizerService implements Serializable{
 		   Cuenta cuentaFrom=null;
 		   if(entidadFrom!=null && !v.isNullorEmpty(t.getFromAccount())){
 			   CuentaPK cuentaFromPk = new CuentaPK();
-			   cuentaFromPk.setEntidadId(entidadFrom.getId());
+			   cuentaFromPk.setEntidadId(new Long(entidadFrom.getId()));
 			   cuentaFromPk.setNumero(t.getFromAccount());
 			   cuentaFrom=ejbCuenta.find(cuentaFromPk);
 		   }

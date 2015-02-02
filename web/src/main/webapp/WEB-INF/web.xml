@@ -23,9 +23,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 </context-param> 
 
 <security-constraint>
+   <display-name>Bank-html</display-name>
 	<web-resource-collection>
 		<web-resource-name>HtmlAuth</web-resource-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/banca/*</url-pattern>
 		<http-method>GET</http-method>
 		<http-method>POST</http-method>
 	</web-resource-collection>
@@ -33,17 +34,51 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 		<role-name>bank</role-name>
 	</auth-constraint>
 </security-constraint>
+
+<security-constraint>
+   <display-name>Merchand-html</display-name>
+	<web-resource-collection>
+		<web-resource-name>HtmlAuth</web-resource-name>
+		<url-pattern>/comercios/*</url-pattern>
+		<http-method>GET</http-method>
+		<http-method>POST</http-method>
+	</web-resource-collection>
+	<auth-constraint>
+		<role-name>merchand</role-name>
+		<role-name>bank</role-name>
+	</auth-constraint>
+</security-constraint>
+
+<security-constraint>
+   <display-name>Tarjetahabientes-html</display-name>
+	<web-resource-collection>
+		<web-resource-name>HtmlAuth</web-resource-name>
+		<url-pattern>/clientes/*</url-pattern>
+		<http-method>GET</http-method>
+		<http-method>POST</http-method>
+	</web-resource-collection>
+	<auth-constraint>
+		<role-name>cardholder</role-name>
+		<role-name>bank</role-name>
+	</auth-constraint>
+</security-constraint>
+
 <login-config>
 	<auth-method>BASIC</auth-method>
 	<realm-name>DBLogin</realm-name>
 	<!-- realm-name>file</realm-name-->
+	<form-login-config>
+			<form-login-page>/login.html</form-login-page>
+			<form-error-page>/login-failed.html</form-error-page>
+	</form-login-config>
 </login-config>
+
 <security-role>
 	<role-name>bank</role-name>
+	<role-name>merchand</role-name>
+	<role-name>cardholder</role-name>
 </security-role>
 
-
-  
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -58,5 +93,23 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 <extension>htc</extension>
 <mime-type>text/x-component</mime-type>
 </mime-mapping>
+
+
+<error-page>
+    <error-code>401</error-code>
+    <location>/error.xhtml</location>
+</error-page>
+<!-- error-page>
+    <error-code>403</error-code>
+    <location>/error.xhtml</location>
+</error-page>
+<error-page>
+    <error-code>500</error-code>
+    <location>/error.xhtml</location>
+</error-page>
+<error-page>
+    <error-code>503</error-code>
+    <location>/error.xhtml</location>
+</error-page -->
   
 </web-app>

@@ -6,7 +6,11 @@
 
 package com.company.prototype.service;
 
+import java.util.Date;
+
+import com.company.prototype.model.entity.Cuenta;
 import com.company.prototype.model.entity.Tarjeta;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,6 +33,23 @@ public class TarjetaFacade extends AbstractFacade<Tarjeta> {
         super(Tarjeta.class);
     }
     
+    
+    @Override
+    public void create(Tarjeta entity) {
+    	entity.setAdmCreacion(new Date());
+    	entity.setAdmActualizacion(new Date());
+    	super.create(entity);
+        
+    }
+    
+    @Override
+    public Tarjeta edit(Tarjeta entity) {
+    	entity.setAdmActualizacion(new Date());
+    	if(entity.getAdmCreacion()==null){
+    		entity.setAdmCreacion(new Date());
+    	}
+        return super.edit(entity);
+    }
     
     
 }

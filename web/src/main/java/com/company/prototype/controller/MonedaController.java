@@ -4,6 +4,7 @@ import com.company.prototype.model.entity.Moneda;
 import com.company.prototype.controller.util.JsfUtil;
 import com.company.prototype.controller.util.JsfUtil.PersistAction;
 import com.company.prototype.service.MonedaFacade;
+import com.company.prototype.util.ControllerUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -88,6 +89,7 @@ public class MonedaController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
+        	selected.setAdmUsuario(ControllerUtils.getSessionUser(FacesContext.getCurrentInstance()));
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {

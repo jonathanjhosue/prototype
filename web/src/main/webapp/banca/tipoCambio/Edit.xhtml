@@ -13,24 +13,24 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoCambioController.selected != null}">
                         <p:outputLabel value="#{bundle.EditTipoCambioLabel_tipoCambioPK_fecha}" for="tipoCambioPK_fecha" />
-                        <p:calendar id="tipoCambioPK_fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{tipoCambioController.selected.tipoCambioPK.fecha}" title="#{bundle.EditTipoCambioTitle_tipoCambioPK_fecha}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_tipoCambioPK_fecha}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{tipoCambioController.selected.id}" title="#{bundle.EditTipoCambioTitle_id}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_id}"/>
+                        <p:calendar id="tipoCambioPK_fecha" pattern="dd/MM/yyyy HH:mm:ss" value="#{tipoCambioController.selected.tipoCambioPK.fecha}" title="#{bundle.EditTipoCambioTitle_tipoCambioPK_fecha}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_tipoCambioPK_fecha}" showOn="button" disabled="true"/>
+                        <p:outputLabel value="#{bundle.EditTipoCambioLabel_id}"  />
+                        <p:outputLabel id="id" value="#{tipoCambioController.selected.id}" title="#{bundle.EditTipoCambioTitle_id}" />
                         <p:outputLabel value="#{bundle.EditTipoCambioLabel_valor}" for="valor" />
-                        <p:inputText id="valor" value="#{tipoCambioController.selected.valor}" title="#{bundle.EditTipoCambioTitle_valor}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_valor}"/>
+                        <p:inputText id="valor" value="#{tipoCambioController.selected.valor}" title="#{bundle.EditTipoCambioTitle_valor}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_valor}" disabled="true"/>
 
                                                 
                          <p:outputLabel value="#{bundle.EditTipoCambioLabel_moneda1}" for="moneda1" />
-                        <p:selectOneMenu id="moneda1" value="#{tipoCambioController.selected.moneda1}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda1}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                        <p:selectOneMenu id="moneda1" value="#{tipoCambioController.selected.moneda1}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda1}"  disabled="true">
+                
                             <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
                                            var="monedaItem"
                                            itemValue="#{monedaItem}" itemLabel="#{monedaItem.nombre} #{monedaItem.simbolo}"/>
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.EditTipoCambioLabel_moneda}" for="moneda2" />
-                        <p:selectOneMenu id="moneda2" value="#{tipoCambioController.selected.moneda2}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                        <p:selectOneMenu id="moneda2" value="#{tipoCambioController.selected.moneda2}" required="true" requiredMessage="#{bundle.EditTipoCambioRequiredMessage_moneda}" disabled="true">
+                      
                             <f:selectItems value="#{monedaController.itemsAvailableSelectOne}"
                                            var="monedaItem"
                                            itemValue="#{monedaItem}" itemLabel="#{monedaItem.nombre} #{monedaItem.simbolo}"/>

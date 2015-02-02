@@ -93,9 +93,9 @@ public class Tarjeta implements Serializable {
         @JoinColumn(name = "entidad_id", referencedColumnName = "entidad_id")})
     @ManyToOne(optional = false)
     private Cuenta cuenta;
-    @JoinColumn(name = "entidad_id", referencedColumnName = "id", updatable=false,insertable=false)
+    /*@JoinColumn(name = "entidad_id", referencedColumnName = "id", updatable=false,insertable=false)
     @ManyToOne(optional = false)
-    private Entidad entidadId;
+    private Entidad entidadId;*/
 
     public Tarjeta() {
     }
@@ -194,21 +194,21 @@ public class Tarjeta implements Serializable {
         this.clienteId = clienteId;
     }
 
-    /*public Cuenta getCuenta() {
+    public Cuenta getCuenta() {
         return cuenta;
     }
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
-    }*/
-
+    }
+    /*
     public Entidad getEntidadId() {
         return entidadId;
     }
 
     public void setEntidadId(Entidad entidadId) {
         this.entidadId = entidadId;
-    }
+    }*/
 
     @Override
     public int hashCode() {

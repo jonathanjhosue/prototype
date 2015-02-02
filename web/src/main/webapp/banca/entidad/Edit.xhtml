@@ -12,8 +12,9 @@
             <h:form id="EntidadEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{entidadController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditEntidadLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{entidadController.selected.id}" title="#{bundle.EditEntidadTitle_id}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditEntidadLabel_id}"  />
+                        <p:outputLabel value="#{entidadController.selected.id}" title="#{bundle.EditEntidadTitle_id}" />
+                                               
                         <p:outputLabel value="#{bundle.EditEntidadLabel_referencia}" for="referencia" />
                         <p:inputText id="referencia" value="#{entidadController.selected.referencia}" title="#{bundle.EditEntidadTitle_referencia}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_referencia}"/>
                         <p:outputLabel value="#{bundle.EditEntidadLabel_nombre}" for="nombre" />
