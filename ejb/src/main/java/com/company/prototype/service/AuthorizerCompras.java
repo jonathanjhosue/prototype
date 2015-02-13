@@ -20,6 +20,7 @@ import com.company.prototype.util.ApplicationConfiguration.AuthorizerResponse;
 import com.company.prototype.util.ApplicationConfiguration.EstadosEstadoCuenta;
 import com.company.prototype.util.ApplicationConfiguration.EstadosTransaccion;
 import com.company.prototype.util.ApplicationConfiguration.TiposTransaccion;
+import com.company.prototype.util.EntityUtil;
 import com.company.prototype.util.TransactionUtils;
 import com.company.prototype.util.Validator;
 
@@ -172,7 +173,7 @@ public class AuthorizerCompras implements Authorizer,Serializable{
 					BigDecimal newSaldo= ec.getSaldoactual().subtract(t.getValor());
 					ec.setEstado(EstadosEstadoCuenta.TRANSACCIONES_PENDIENTES);
 					ec.setSaldoactual(newSaldo);
-					t.setReferencia(TransactionUtils.generateIntegerID());					
+					t.setReferencia(EntityUtil.generateIntegerID());					
 					t.setEstado(EstadosTransaccion.PROCESADA);
 					
 					estadoCuentaFacade.edit(ec);

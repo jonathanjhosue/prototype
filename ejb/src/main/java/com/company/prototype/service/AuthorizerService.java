@@ -21,6 +21,7 @@ import com.company.prototype.model.entity.Transaccion;
 import com.company.prototype.util.ApplicationConfiguration.AuthorizerResponse;
 import com.company.prototype.util.ApplicationConfiguration.EstadosTransaccion;
 import com.company.prototype.util.ApplicationConfiguration.TiposTransaccion;
+import com.company.prototype.util.EntityUtil;
 import com.company.prototype.util.TransactionUtils;
 import com.company.prototype.util.Validator;
 
@@ -322,7 +323,7 @@ public class AuthorizerService implements Serializable{
 		  
 		   newT.setId(t.getId());
 		   newT.setIdentificacion(t.getIdentification());		   
-		   newT.setReferencia(TransactionUtils.generateIntegerID());
+		   newT.setReferencia(EntityUtil.generateIntegerID());
 		   newT.setFecha(t.getDate()!=null?t.getDate():Calendar.getInstance().getTime());
 		   newT.setEstado(EstadosTransaccion.RECIBIDA.getValue());
 		   newT.setValor(t.getValue());		   

@@ -11,6 +11,7 @@ import java.util.Date;
 import com.company.prototype.model.entity.Entidad;
 import com.company.prototype.model.entity.TipoCambio;
 import com.company.prototype.model.entity.TipoCambioPK;
+import com.company.prototype.util.EntityUtil;
 import com.company.prototype.util.SimpleCache;
 
 import javax.annotation.PostConstruct;
@@ -58,6 +59,7 @@ public class TipoCambioFacade extends AbstractFacade<TipoCambio> {
 
 	 @Override
 	    public void create(TipoCambio entity) {
+		 	entity.setId(EntityUtil.nextId());
 	    	entity.setAdmCreacion(new Date());
 	    	super.create(entity);
 	        
@@ -65,7 +67,12 @@ public class TipoCambioFacade extends AbstractFacade<TipoCambio> {
 	    
 	    @Override
 	    public TipoCambio edit(TipoCambio entity) {
-	    	//entity.setAdmActualizacion(new Date());
+	    	if(entity.getId()==null || entity.getId().longValue()==0l){
+	    		entity.setId(EntityUtil.nextId());
+	    	}
+	    	if(entity.getAdmCreacion()==null){
+	    		entity.setAdmCreacion(new Date());
+	    	}
 	        return super.edit(entity);
 	    }
     

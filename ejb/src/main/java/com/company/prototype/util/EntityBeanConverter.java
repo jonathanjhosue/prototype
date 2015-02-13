@@ -51,7 +51,7 @@ public class EntityBeanConverter {
 		Exchange e= new Exchange();
 		e.setCurrencyFrom(t.getMoneda1().getId());
 		e.setCurrencyTo(t.getMoneda2().getId());
-		e.setValue(new BigDecimal(t.getValor()));
+		e.setValue(t.getValor());
 		
 		return e;
 	}

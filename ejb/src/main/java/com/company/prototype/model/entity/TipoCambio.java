@@ -7,9 +7,11 @@
 package com.company.prototype.model.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Generated;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +19,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -52,16 +55,21 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TipoCambio.findByAdmUsuario", query = "SELECT t FROM TipoCambio t WHERE t.admUsuario = :admUsuario")})
 public class TipoCambio implements Serializable {
     private static final long serialVersionUID = 1L;
+    /*
+     * Este Id es generado de manera manual en el facade.
+     * */
+    @Basic(optional = false)
+    //@GeneratedValue(strategy = GenerationType.)
+    @Column(name = "id")
+    private Long id;
+    
     @EmbeddedId
     protected TipoCambioPK tipoCambioPK;
-    @Basic(optional = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "valor")
-    private long valor;
+    private BigDecimal valor;
     @Basic(optional = false)
     @NotNull
     @Column(name = "adm_creacion")
@@ -90,7 +98,7 @@ public class TipoCambio implements Serializable {
         this.tipoCambioPK = tipoCambioPK;
     }
 
-    public TipoCambio(TipoCambioPK tipoCambioPK, long id, long valor, Date admCreacion, String admUsuario) {
+    public TipoCambio(TipoCambioPK tipoCambioPK, Long id, BigDecimal valor, Date admCreacion, String admUsuario) {
         this.tipoCambioPK = tipoCambioPK;
         this.id = id;
         this.valor = valor;
@@ -110,19 +118,19 @@ public class TipoCambio implements Serializable {
         this.tipoCambioPK = tipoCambioPK;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(long valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
@@ -165,7 +173,7 @@ public class TipoCambio implements Serializable {
     }
 
     public void setMoneda2(Moneda moneda) {
-        this.moneda2 = moneda2;
+        this.moneda2 = moneda;
     }
 
     public Moneda getMoneda1() {

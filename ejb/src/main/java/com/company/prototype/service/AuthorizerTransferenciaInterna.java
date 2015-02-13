@@ -13,6 +13,7 @@ import com.company.prototype.model.entity.Cuenta;
 import com.company.prototype.model.entity.EstadoCuenta;
 import com.company.prototype.model.entity.Tarjeta;
 import com.company.prototype.model.entity.Transaccion;
+import com.company.prototype.util.EntityUtil;
 import com.company.prototype.util.TransactionUtils;
 import com.company.prototype.util.Validator;
 import com.company.prototype.util.ApplicationConfiguration.AuthorizerResponse;
@@ -167,7 +168,7 @@ public class AuthorizerTransferenciaInterna implements Authorizer,Serializable{
 					ecTo.setEstado(EstadosEstadoCuenta.TRANSACCIONES_PENDIENTES);
 					ecTo.setSaldoactual(newSaldoTo);
 					
-					t.setReferencia(TransactionUtils.generateIntegerID());					
+					t.setReferencia(EntityUtil.generateIntegerID());					
 					t.setEstado(EstadosTransaccion.PROCESADA);				
 					
 					estadoCuentaFacade.edit(ecFrom);
