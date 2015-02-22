@@ -9,9 +9,13 @@ package com.company.prototype.service;
 import java.util.Date;
 import java.util.List;
 
+import com.company.prototype.model.entity.Cierre;
 import com.company.prototype.model.entity.Comercio;
 import com.company.prototype.model.entity.Cuenta;
+import com.company.prototype.model.entity.Log;
+import com.company.prototype.util.SimpleDBLogging;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,6 +26,8 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class CuentaFacade extends AbstractFacade<Cuenta> {
+
+
     @PersistenceContext(unitName = "prototypeUnit")
     private EntityManager em;
 
@@ -58,6 +64,14 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
         		.getSingleResult();
     }
     
+    
+    /* datos específicos del objeto */
+    protected Log toLog(Cuenta e){    	
+    	Log log= new Log();
+    	log.setReferencia(e.getCuentaPK()!=null?e.getCuentaPK().getNumero():"");
+    	log.setUsuario(e.getAdmUsuario());    	
+    	return log;    	
+    }
     
     
 }

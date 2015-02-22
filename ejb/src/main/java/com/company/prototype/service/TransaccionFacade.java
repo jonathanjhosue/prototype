@@ -9,6 +9,8 @@ package com.company.prototype.service;
 import java.util.List;
 
 import com.company.prototype.model.entity.Comercio;
+import com.company.prototype.model.entity.Log;
+import com.company.prototype.model.entity.Tarjeta;
 import com.company.prototype.model.entity.Transaccion;
 
 import javax.ejb.Stateless;
@@ -45,6 +47,13 @@ public class TransaccionFacade extends AbstractFacade<Transaccion> {
     		
     	}
     	return null;
+    }
+    
+    /* datos específicos del objeto */
+    protected Log toLog(Transaccion e){    	
+    	Log log= new Log();
+    	log.setReferencia(e.getId()!=null?e.getId().toString():"");    	    	
+    	return log;    	
     }
     
 }

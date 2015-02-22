@@ -8,9 +8,11 @@ package com.company.prototype.service;
 
 import java.util.List;
 
+import com.company.prototype.model.entity.Cierre;
 import com.company.prototype.model.entity.Cuenta;
 import com.company.prototype.model.entity.CuentaPK;
 import com.company.prototype.model.entity.EstadoCuenta;
+import com.company.prototype.model.entity.Log;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -49,6 +51,13 @@ public class EstadoCuentaFacade extends AbstractFacade<EstadoCuenta> {
         		.setParameter("cuenta", cuenta)
         		.getResultList();
     }
+ 
+ /* datos específicos del objeto */
+ protected Log toLog(EstadoCuenta e){    	
+ 	Log log= new Log();
+ 	log.setReferencia(e.getId()!=null?e.getId().toString():""); 	
+ 	return log;    	
+ }
     
     
 }

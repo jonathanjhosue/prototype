@@ -23,7 +23,7 @@
                         <p:selectOneRadio id="estado" value="#{usuarioController.selected.estado}" title="#{bundle.CreateUsuarioTitle_estado}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_estado}">
 				            <f:selectItems value="#{applicationController.estadosEstandar}"
                                            var="objItem"
-                                           itemValue="#{objItem}" itemLabel="#{objItem}"/>
+                                           itemValue="#{objItem.value}" itemLabel="#{objItem}"/>
 				        </p:selectOneRadio> 
                         
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_rol}" for="rol" />

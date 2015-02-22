@@ -8,7 +8,9 @@ package com.company.prototype.service;
 
 import java.util.Date;
 
+import com.company.prototype.model.entity.Cierre;
 import com.company.prototype.model.entity.Entidad;
+import com.company.prototype.model.entity.Log;
 import com.company.prototype.model.entity.Moneda;
 
 import javax.ejb.Stateless;
@@ -44,6 +46,14 @@ public class MonedaFacade extends AbstractFacade<Moneda> {
     public Moneda edit(Moneda entity) {
     	entity.setAdmActualizacion(new Date());
         return super.edit(entity);
+    }
+    
+    /* datos específicos del objeto */
+    protected Log toLog(Moneda e){    	
+    	Log log= new Log();
+    	log.setReferencia(e.getId()!=null?e.getId().toString():"");
+    	log.setUsuario(e.getAdmUsuario());    	
+    	return log;    	
     }
     
 }

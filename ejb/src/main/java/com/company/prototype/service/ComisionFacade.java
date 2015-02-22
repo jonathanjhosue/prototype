@@ -6,7 +6,10 @@
 
 package com.company.prototype.service;
 
+import com.company.prototype.model.entity.Cierre;
 import com.company.prototype.model.entity.Comision;
+import com.company.prototype.model.entity.Log;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +30,14 @@ public class ComisionFacade extends AbstractFacade<Comision> {
 
     public ComisionFacade() {
         super(Comision.class);
+    }
+    
+    /* datos específicos del objeto */
+    protected Log toLog(Comision e){    	
+    	Log log= new Log();
+    	log.setReferencia(e.getId()!=null?e.getId().toString():"");
+    	   	
+    	return log;    	
     }
     
 }

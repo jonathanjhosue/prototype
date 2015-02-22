@@ -28,8 +28,6 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                   
-
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListTransaccionTitle_id}"/>
@@ -111,11 +109,8 @@
                             <h:outputText value="#{item.tipotransaccion}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{transaccionController.prepareCreate}" update=":TransaccionCreateForm" oncomplete="PF('TransaccionCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TransaccionViewForm" oncomplete="PF('TransaccionViewDialog').show()" disabled="#{empty transaccionController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TransaccionEditForm" oncomplete="PF('TransaccionEditDialog').show()" disabled="#{empty transaccionController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{transaccionController.destroy}" update=":growl,datalist" disabled="#{empty transaccionController.selected}"/>
-                        
+                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TransaccionViewForm" oncomplete="PF('TransaccionViewDialog').show()" disabled="#{empty transaccionController.selected}"/>
+                           
                            <h:commandLink>
 				                <p:graphicImage library="images" name="icons/excel.png" width="24" class="ui-button ui-widget "/>
 				                <p:dataExporter type="xls" target="datalist" fileName="lista#{of:formatDate(now, 'yyyyMMddHHmm')}" />
@@ -141,8 +136,6 @@
                 </p:panel>
             </h:form>
 
-            <ui:include src="Create.xhtml"/>
-            <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
         </ui:define>
     </ui:composition>

@@ -8,7 +8,9 @@ package com.company.prototype.service;
 
 import java.util.Date;
 
+import com.company.prototype.model.entity.Log;
 import com.company.prototype.model.entity.Moneda;
+import com.company.prototype.model.entity.TipoCambio;
 import com.company.prototype.model.entity.Usuario;
 import com.company.prototype.util.UsersUtil;
 
@@ -52,6 +54,14 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     		entity.setAdmCreacion(new Date());
     	entity.setPassword(util.generateMD5Password(entity.getPassword()));
         return super.edit(entity);
+    }
+    
+    /* datos específicos del objeto */
+    protected Log toLog(Usuario e){    	
+    	Log log= new Log();
+    	log.setReferencia(e.getUsuarioPK()!=null?e.getUsuarioPK().getUsuario():"");
+    	log.setUsuario(e.getAdmUsuario());    	
+    	return log;    	
     }
     
 }

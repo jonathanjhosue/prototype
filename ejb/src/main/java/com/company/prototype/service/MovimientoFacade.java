@@ -6,7 +6,10 @@
 
 package com.company.prototype.service;
 
+import com.company.prototype.model.entity.Cierre;
+import com.company.prototype.model.entity.Log;
 import com.company.prototype.model.entity.Movimiento;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +30,13 @@ public class MovimientoFacade extends AbstractFacade<Movimiento> {
 
     public MovimientoFacade() {
         super(Movimiento.class);
+    }
+    
+    /* datos específicos del objeto */
+    protected Log toLog(Movimiento e){    	
+    	Log log= new Log();
+    	log.setReferencia(e.getId()!=null?e.getId().toString():"");    	
+    	return log;    	
     }
     
 }
