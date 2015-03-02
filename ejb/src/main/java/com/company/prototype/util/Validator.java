@@ -58,7 +58,7 @@ public class Validator {
 	
 	public boolean isNullorEmpty(CuentaPK v){
 		return v==null || v.getNumero()==null || v.getEntidadId()==null || 
-			   v.getNumero().isEmpty() || v.getEntidadId().intValue()!=0;		
+			   v.getNumero().isEmpty() || v.getEntidadId().intValue()==0;		
 	}
 	
 	public boolean isNullorEmpty(EstadoCuenta v){

@@ -124,7 +124,7 @@ public class AuthorizerTransferenciaInterna implements Authorizer,Serializable{
 					}else{
 						r.setResponseCode(AuthorizerResponse.SUCCESSFUL);					
 					}
-					r.setResponseCode(AuthorizerResponse.SUCCESSFUL);			
+					
 				}
 				else{
 					r.setResponseCode(AuthorizerResponse.REJECTED);

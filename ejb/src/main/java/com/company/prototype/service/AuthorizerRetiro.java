@@ -127,7 +127,7 @@ public class AuthorizerRetiro implements Authorizer,Serializable{
 		r=validation(t);
 		if(success.equals(r.getAuthorizerResponse())){			
 			try{					
-				Cuenta cuentaFrom=cuentaFacade.find(t.getCuenta1().getCuentaPK());
+				Cuenta cuentaFrom=cuentaFacade.find(t.getCuenta().getCuentaPK());
 				EstadoCuenta ec=null;
 				if(cuentaFrom!=null){
 					ec=estadoCuentaFacade.findCurrent(cuentaFrom);	

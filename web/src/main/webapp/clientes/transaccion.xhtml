@@ -9,43 +9,43 @@
    
 
   
-   <ui:define name="title">Autorizar Transacciones</ui:define>
+   <ui:define name="title"><h:outputText value="#{bundle.ClienteTransaccionTitle}"></h:outputText></ui:define>
    
    
    <ui:define name="box1">
    
     <h:outputScript library="angular" name="TransactionCtrl.js" target="head"/>   
-	    <h2>Transacción</h2>
+	    <h2><h:outputText value="#{bundle.ClienteTransaccionBox1}"></h:outputText></h2>
 	    <div class="clientData" ng-app="myApp" >
 	    <div ng-controller="TransactionCtrl">  
        <form id="transactionForm" target="frameCode" action="http://localhost:8080/prototype-web/rest/authorizerWsRest/authorize/json" method="post">
-	       <label for="identity">Identificación</label>          <input type="text" name="identity" ng-model="transactionForm.identification"/> <br /> 
-	       <label for="transactionType">Tipo Transacción</label> <input type="text" name="transactionType" ng-model="transactionForm.transactionType"/><br /> 
+	       <label for="identity"><h:outputText value="#{bundle.LabelId}"></h:outputText></label>          <input type="text" name="identity" ng-model="transactionForm.identification"/> <br /> 
+	       <label for="transactionType"><h:outputText value="#{bundle.LabelTransactionType}"></h:outputText></label> <input type="text" name="transactionType" ng-model="transactionForm.transactionType"/><br /> 
 	
-	       <label for="entityFrom">Entidad Origen</label>        <input type="text" name="entityFrom" ng-model="transactionForm.fromEntity"/><br />
-	       <label for="toAccount">Account Origen </label>        <input type="text" name="toAccount" ng-model="transactionForm.fromAccount"/><br />
+	       <label for="entityFrom"><h:outputText value="#{bundle.LabelEntityFrom}"></h:outputText></label>        <input type="text" name="entityFrom" ng-model="transactionForm.fromEntity"/><br />
+	       <label for="accountFrom"><h:outputText value="#{bundle.LabelAcountFrom}"></h:outputText></label>        <input type="text" name="toAccount" ng-model="transactionForm.fromAccount"/><br />
 	        
-	       <label for="toEntity">Entidad Destino</label>         <input type="text" name="toEntity" ng-model="transactionForm.toEntity"/><br />
-	       <label for="toAccount">Account Destino</label>        <input type="text" name="toAccount" ng-model="transactionForm.toAccount"/><br />
+	       <label for="toEntity"><h:outputText value="#{bundle.LabelToEntity}"></h:outputText></label>         <input type="text" name="toEntity" ng-model="transactionForm.toEntity"/><br />
+	       <label for="toAccount"><h:outputText value="#{bundle.LabelToAccount}"></h:outputText></label>        <input type="text" name="toAccount" ng-model="transactionForm.toAccount"/><br />
 	       
-	       <label for="cardNumber">Número de Tarjeta</label>     <input type="text" name="cardNumber" ng-model="transactionForm.cardNumber"/><br />
-	       <label for="currencyCode">Móneda</label>              <input type="text" name="currencyCode" ng-model="transactionForm.currencyCode"/><br />
-	       <label for="value">Valor</label>                      <input type="text" name="value" ng-model="transactionForm.value"/><br />
-	       <label for="merchandId">Comercio</label>              <input type="text" name="merchandId" ng-model="transactionForm.merchandId"/><br />
+	       <label for="cardNumber"><h:outputText value="#{bundle.LabelCardNumber}"></h:outputText></label>     <input type="text" name="cardNumber" ng-model="transactionForm.cardNumber"/><br />
+	       <label for="currencyCode"><h:outputText value="#{bundle.LabelCurrency}"></h:outputText></label>              <input type="text" name="currencyCode" ng-model="transactionForm.currencyCode"/><br />
+	       <label for="value"><h:outputText value="#{bundle.LabelValue}"></h:outputText></label>                      <input type="text" name="value" ng-model="transactionForm.value"/><br />
+	       <label for="merchandId"><h:outputText value="#{bundle.LabelCommerce}"></h:outputText></label>              <input type="text" name="merchandId" ng-model="transactionForm.merchandId"/><br />
       	<br/>  	
 
-		<a href="#" class="button" ng-click="authorize('json')"><span><span>Authorizar (JSON)</span></span></a>
-		<a href="#" class="button" ng-click="authorize('xml')"><span><span>Authorizar (XML)</span></span></a>			
+		<a href="#" class="button" ng-click="authorize('json')"><span><span><h:outputText value="#{bundle.buttonAuthorizeJson}"></h:outputText></span></span></a>
+		<a href="#" class="button" ng-click="authorize('xml')"><span><span><h:outputText value="#{bundle.buttonAuthorizeXml}"></h:outputText></span></span></a>			
 		</form>
 		
 		<br/>
-		     <h2>Respuesta</h2> 		
+		     <h2><h:outputText value="#{bundle.LabelResponse}"></h:outputText></h2> 		
 		<br />
 		
-		<LABEL>Servicio</LABEL><span>{{UrlService}}</span>
+		<LABEL><h:outputText value="#{bundle.LabelService}"></h:outputText></LABEL><span>{{UrlService}}</span>
 			<br/>
 			   	<br/>  	
-		<LABEL>Data</LABEL><pre class="selectedItems codeoutput">{{responseData}}</pre><br/>
+		<LABEL><h:outputText value="#{bundle.LabelData}"></h:outputText></LABEL><pre class="selectedItems codeoutput">{{responseData}}</pre><br/>
 		<br/>
 
 
@@ -69,7 +69,7 @@
    
    <ui:define name="box3">
       
-		<h2>Contactos</h2>
+		<h2><h:outputText value="#{bundle.ClienteTransaccionBox3}"></h:outputText></h2>
 		<p class="pad_bot1">
 			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
 		</p>
@@ -83,7 +83,7 @@
       
       
       
-		<h2>Testimonials</h2>
+		<h2><h:outputText value="#{bundle.ClienteTransaccionSideBarLeft}"></h:outputText></h2>
 		<div class="wrapper pad_bot1">
 			<figure>
 			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>

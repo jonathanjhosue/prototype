@@ -7,12 +7,12 @@
    xmlns:p="http://primefaces.org/ui"
    template="/WEB-INF/templates/template1.xhtml">
    
-   <ui:define name="title">Acerca de</ui:define>
+   <ui:define name="title"><h:outputText value="#{bundle.AboutTitle}"></h:outputText></ui:define>
    
    
    <ui:define name="box1">
       
-		<h2>Team Member One</h2>
+		<h2><h:outputText value="#{bundle.AboutBox1}"></h:outputText></h2>
 		<div class="wrapper pad_bot1">
 			<figure>
 			
@@ -26,7 +26,7 @@
    
     <ui:define name="box2">
       
-		<h2>Another Member</h2>
+		<h2><h:outputText value="#{bundle.AboutBox2}"></h:outputText></h2>
 			<div class="wrapper pad_bot1">
 				<figure>
 				<p:graphicImage library="design" class="left marg_right1" name="images/page2_img2.jpg" alt=""/>
@@ -39,7 +39,7 @@
    
    <ui:define name="box3">
       
-		<h2>Another Member</h2>
+		<h2><h:outputText value="#{bundle.AboutBox3}"></h:outputText></h2>
 		<div class="wrapper pad_bot1">
 			<figure>
 			<p:graphicImage library="design" class="left marg_right1" name="images/page2_img3.jpg" alt=""/>
@@ -53,7 +53,7 @@
    
     <ui:define name="sidebarleft">
       
-			<h2>Our Services</h2>
+			<h2><h:outputText value="#{bundle.AboutSideBarLeft}"></h:outputText></h2>
 			<ul class="list1 pad_bot1">
 				<li><a href="#">At vero eos et accusamus</a></li>
 				<li><a href="#">Lusto odio dignissimos ducimus</a></li>
@@ -70,7 +70,7 @@
    <ui:define name="maincontent">
       
 		
-		<h2>About Website</h2>
+		<h2><h:outputText value="#{bundle.AboutMainContent}"></h:outputText></h2>
 		<div class="wrapper under">
 		
 			<figure>

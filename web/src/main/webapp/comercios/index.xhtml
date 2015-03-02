@@ -9,12 +9,12 @@
    
 
   
-   <ui:define name="title">Sitio de Comercios</ui:define>
+   <ui:define name="title"><h:outputText value="#{bundle.ComercioIndexTitle}"></h:outputText></ui:define>
    
    
    <ui:define name="box1">
    
-		<h2>Transacciones de Comercios</h2> 
+		<h2><h:outputText value="#{bundle.ComercioIndexBox1}"></h:outputText></h2> 
 		
 		<h:form target="frameCode" method="post">
 			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
@@ -51,7 +51,7 @@
    
    <ui:define name="box3">
       
-		<h2>Contactos</h2>
+		<h2><h:outputText value="#{bundle.ComercioIndexBox3}"></h:outputText></h2>
 		<p class="pad_bot1">
 			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
 		</p>
@@ -65,7 +65,7 @@
       
       
       
-		<h2>Testimonials</h2>
+		<h2><h:outputText value="#{bundle.ComercioIndexSideBarLeft}"></h:outputText></h2>
 		<div class="wrapper pad_bot1">
 			<figure>
 			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>

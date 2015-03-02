@@ -9,37 +9,37 @@
    
 
   
-   <ui:define name="title">Sistema de Actualización e Integración</ui:define>
+   <ui:define name="title"><h:outputText value="#{bundle.ClienteEstadoCuentaTitle}"></h:outputText></ui:define>
    
    
    <ui:define name="box1">
    
     <h:outputScript library="angular" name="AccountCtrl.js" target="head"/>   
-	    <h2>Cuentas</h2>
+	    <h2><h:outputText value="#{bundle.ClienteEstadoCuentaBox1a}"></h:outputText></h2>
 	    <div class="clientData" ng-app="myApp" >
 	    <div ng-controller="AccountCtrl">  
        <form id="formAccount" target="frameCode" action="http://localhost:8080/prototype-web/rest/accountWs/x/y/json" method="get">
-       <label for="entity">Entity Id</label> <input type="text" name="entity" ng-model="accountForm.entity"/> <br /> 
-       <label for="account">Cuenta Identity</label> <input type="text" name="account" ng-model="accountForm.account"/><br /> 
+       <label for="entity"><h:outputText value="#{bundle.LabelEntity}"></h:outputText></label> <input type="text" name="entity" ng-model="accountForm.entity"/> <br /> 
+       <label for="account"><h:outputText value="#{bundle.LabelAccount}"></h:outputText></label> <input type="text" name="account" ng-model="accountForm.account"/><br /> 
 <br />
 		<a href="#" class="button" ng-click="searchAccount()"><span><span>Buscar</span></span></a>
 		<a href="#" class="button" ng-click="getResponse('xml')"><span><span>XML</span></span></a>
 		<a href="#" class="button" ng-click="getResponse('json')"><span><span>JSON</span></span></a>		
 		</form>
 		<br/>
-		<h2>Estados de Cuenta</h2> 
+		<h2><h:outputText value="#{bundle.ClienteEstadoCuentaBox1b}"></h:outputText></h2> 
 		
 		
 		 <div class="gridStyle" ng-grid="gridOptions">
 		</div>
-		<h2>Movimientos</h2>  
+		<h2><h:outputText value="#{bundle.LabelMovements}"></h:outputText></h2>  
 		<div class="gridStyle" ng-grid="gridOptionsDetails">
 		</div>
     	
-		<LABEL>Data</LABEL><code class="selectedItems codeoutput">{{selectedAccount[0]}}</code><br/>
+		<LABEL><h:outputText value="#{bundle.LabelData}"></h:outputText></LABEL><code class="selectedItems codeoutput">{{selectedAccount[0]}}</code><br/>
 		<br/>
 
-		<LABEL>Servicio</LABEL><span>{{UrlService}}</span>
+		<LABEL><h:outputText value="#{bundle.LabelService}"></h:outputText></LABEL><span>{{UrlService}}</span>
 		    <iframe id="frameCode" name="frameCode" src=""></iframe>
 		
 
@@ -59,7 +59,7 @@
    
    <ui:define name="box3">
       
-		<h2>Contactos</h2>
+		<h2><h:outputText value="#{bundle.ClienteEstadoCuentaBox3}"></h:outputText></h2>
 		<p class="pad_bot1">
 			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
 		</p>
@@ -73,7 +73,7 @@
       
       
       
-		<h2>Testimonials</h2>
+		<h2><h:outputText value="#{bundle.ClienteEstadoCuentaSideBarLeft}"></h:outputText></h2>
 		<div class="wrapper pad_bot1">
 			<figure>
 			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>

@@ -17,6 +17,9 @@ public class AuthorizerFactory {
 	private AuthorizerDeposito authorizerDeposito;
 	
 	@Inject
+	private AuthorizerRetiro authorizerRetiro;
+	
+	@Inject
 	private AuthorizerTransferenciaInterna authorizerTransferenciaInterna;
 	
 	
@@ -30,7 +33,7 @@ public class AuthorizerFactory {
 			return authorizerDeposito;
 			
 		}else if (TiposTransaccion.RETIRO.equals(type)){
-			return authorizerDeposito;
+			return authorizerRetiro;
 			
 		}
 		else if (TiposTransaccion.TRANSFERENCIA_INTERNA.equals(type)){

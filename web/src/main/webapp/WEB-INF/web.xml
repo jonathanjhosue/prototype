@@ -44,7 +44,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 		<http-method>POST</http-method>
 	</web-resource-collection>
 	<auth-constraint>
-		<role-name>merchand</role-name>
+		<role-name>merchant</role-name>
 		<role-name>bank</role-name>
 	</auth-constraint>
 </security-constraint>
@@ -75,7 +75,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 
 <security-role>
 	<role-name>bank</role-name>
-	<role-name>merchand</role-name>
+	<role-name>merchant</role-name>
 	<role-name>cardholder</role-name>
 </security-role>
 

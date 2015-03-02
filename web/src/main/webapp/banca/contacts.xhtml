@@ -7,10 +7,10 @@
    xmlns:p="http://primefaces.org/ui"
    template="/WEB-INF/templates/template3.xhtml">
    
-   <ui:define name="title">Contáctos</ui:define>
+   <ui:define name="title"><h:outputText value="#{bundle.ContactsTitle}"></h:outputText></ui:define>
       
    <ui:define name="box1">
-   		<h2>Our Contacts</h2>
+   		<h2><h:outputText value="#{bundle.ContactsBox1}"></h:outputText></h2>
 		<div class="wrapper">
 			<article class="col2">
 				<p>
@@ -36,13 +36,13 @@
    </ui:define>
    
    <ui:define name="box2">
-   		<h2>Miscellaneous Info</h2>
+   		<h2><h:outputText value="#{bundle.ContactsBox2}"></h:outputText></h2>
 		<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque.</p>
 						
    </ui:define>
    
    <ui:define name="maincontent">
-   		<h2>Contact Form</h2>
+   		<h2><h:outputText value="#{bundle.ContactsMainContent}"></h:outputText></h2>
 		<form id="ContactForm" action="">
 			<div class="wrapper pad_bot1">
 				<div class="wrapper">

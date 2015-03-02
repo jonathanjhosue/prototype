@@ -9,26 +9,26 @@
    
 
   
-   <ui:define name="title">Sistema de Actualización e Integración</ui:define>
+   <ui:define name="title"><h:outputText value="#{bundle.ClienteIndexTitle}"></h:outputText></ui:define>
    
    
    <ui:define name="box1">
    
     <h:outputScript library="angular" name="ClientCtrl.js" target="head"/>
    <!--h:outputScript library="angular" name="AccountCtrl.js" target="head"/-->
-	    <h2>Buscar cliente</h2>
+	    <h2><h:outputText value="#{bundle.ClienteIndexBox1a}"></h:outputText></h2>
 	    <div class="clientData" ng-app="myApp" >
 	    <div ng-controller="ClientCtrl">  
        <form id="formClient" target="frameCode" action="http://localhost:8080/prototype-web/rest/clientWs/search/json" method="post">
-       <label for="entity">Entity Id</label> <input type="text" name="entity" ng-model="formClient.entity"/> <br /> 
-       <label for="client">Client Identity</label> <input type="text" name="client" ng-model="formClient.client"/><br /> 
+       <label for="entity"><h:outputText value="#{bundle.LabelEntity}"></h:outputText></label> <input type="text" name="entity" ng-model="formClient.entity"/> <br /> 
+       <label for="client"><h:outputText value="#{bundle.LabelClient}"></h:outputText></label> <input type="text" name="client" ng-model="formClient.client"/><br /> 
 <br />
 		<a href="#" class="button" ng-click="searchClient()"><span><span>Buscar</span></span></a>
 		<a href="#" class="button" ng-click="getClientResponse('xml')"><span><span>XML</span></span></a>
 		<a href="#" class="button" ng-click="getClientResponse('json')"><span><span>JSON</span></span></a>		
 		</form>
 		
-		<h2>Información de Cliente</h2>  
+		<h2><h:outputText value="#{bundle.ClienteIndexBox1b}"></h:outputText></h2>  
     	<p class="pad_bot1">	  		
 	   	  	<label>Id:</label>                   <span>{{clientData.id}}  </span><br/>
 	   	  	<label>Nombre:</label>               <span>{{clientData.name}}  </span><br/>
@@ -65,7 +65,7 @@
    
    <ui:define name="box3">
       
-		<h2>Contactos</h2>
+		<h2><h:outputText value="#{bundle.ClienteIndexBox3}"></h:outputText></h2>
 		<p class="pad_bot1">
 			Quas molestias excepturi<br/>sint occaecati cupidiate<br/>non provident.
 		</p>
@@ -79,7 +79,7 @@
       
       
       
-		<h2>Testimonials</h2>
+		<h2><h:outputText value="#{bundle.ClienteIndexSideBarLeft}"></h:outputText></h2>
 		<div class="wrapper pad_bot1">
 			<figure>
 			<p:graphicImage library="design" class="left marg_right1" name="images/page1_img1.jpg" alt=""/>
