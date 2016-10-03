@@ -26,13 +26,11 @@ version="2.1">
 
      
       <properties>   
-      
-         <!--property name="hibernate.hbm2ddl.auto" value="create" /-->
-         <property name="hibernate.hbm2ddl.import_files" value="import_mysqltest.sql"/>
-         <!-- property name="hibernate.hbm2ddl.import_files" value="import_h2test.sql"/-->
+      <!--    
+         <property name="hibernate.hbm2ddl.auto" value="create" />
          <property name="hibernate.show_sql" value="true" />
-        
-          
+      -->
+         <!-- property name="hibernate.hbm2ddl.import_files" value="import.sql"/-->
          <!-- property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup" /-->
 	     <!--property name="hibernate.cache.use_second_level_cache" value="true"/-->
      	 <!--property name="hibernate.cache.use_query_cache" value="true"/-->

@@ -8,8 +8,8 @@ import org.infinispan.manager.CacheContainer;
 
 @Stateless
 public class SimpleCache {
-  
-//@Resource(lookup="java:jboss/infinispan/container/prototypeCache")
+  /*
+@Resource(lookup="java:jboss/infinispan/container/prototypeCache")
  private CacheContainer container;
  
  private org.infinispan.Cache<String, String> cache;
@@ -26,5 +26,5 @@ public class SimpleCache {
  public void put(String key, String value) {
   this.cache.put(key, value);
  }
- 
+ */
 }

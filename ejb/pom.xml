@@ -91,7 +91,7 @@
   		<dependency>
 		  <groupId>org.infinispan</groupId>
 		  <artifactId>infinispan-core</artifactId>
-    	  <version>6.0.2.Final</version>
+    	  <version>8.2.4.Final</version>
     	  <!-- Provided as we use the Infinispan provided by Wildfly -->
     	  <scope>provided</scope>
 		</dependency>
@@ -100,7 +100,7 @@
 			<groupId>org.picketbox</groupId>
 			<artifactId>picketbox</artifactId>
 			<scope>provided</scope>
-			<version>4.0.21.Final</version>
+			<version>4.9.6.Final</version>
 		</dependency>
 
 
@@ -121,8 +121,8 @@
         </dependency>
         <dependency>
             <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.1</version>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>1.2</version>
             <scope>provided</scope>
         </dependency>
         

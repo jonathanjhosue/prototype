@@ -41,6 +41,7 @@ public class MemberListProducer {
     @Produces
     @Named
     public List<Member> getMembers() {
+        
         return members;
     }
 
@@ -52,4 +53,11 @@ public class MemberListProducer {
     public void retrieveAllMembersOrderedByName() {
         members = memberRepository.findAllOrderedByName();
     }
+     
+     public static void main(String[] args) {
+        System.out.println("Hello World!"); // Display the string.
+        System.out.println(5^8); 
+        System.out.println(12^21); 
+    }
+            
 }

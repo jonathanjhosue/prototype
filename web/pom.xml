@@ -92,15 +92,15 @@
     </dependency>
     
     <dependency>  
-    <groupId>org.primefaces.themes</groupId>  
-    <artifactId>all-themes</artifactId>  
-    <version>1.0.10</version>  
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>all-themes</artifactId>
+    <version>1.0.10</version>
 </dependency>
 
 <dependency>
     <groupId>org.omnifaces</groupId>
     <artifactId>omnifaces</artifactId>
-    <version>1.8.1</version> <!-- Or 2.0-SNAPSHOT or 1.10-SNAPSHOT -->
+    <version>2.5.1</version>
 </dependency>
     
     
@@ -119,13 +119,13 @@
 	<dependency>
 	  <groupId>net.sf.jasperreports</groupId>
 	  <artifactId>jasperreports</artifactId>
-	  <version>5.6.1</version>
+	  <version>6.3.0</version>
 	</dependency>
 	
 	<dependency>
   <groupId>net.sf.jasperreports</groupId>
   <artifactId>jasperreports-fonts</artifactId>
-  <version>5.6.1</version>
+  <version>6.0.0</version>
 </dependency>
 	
 	
@@ -162,8 +162,8 @@
 		</dependency>
 		
 		<dependency>
-	<groupId>javax.el</groupId>
-	<artifactId>javax.el-api</artifactId>
+<groupId>org.jboss.spec.javax.el</groupId>
+    <artifactId>jboss-el-api_3.0_spec</artifactId>    
     <scope>provided</scope>
 </dependency>   
 
@@ -182,8 +182,8 @@
                 
                 
                 <dependency>
-<groupId>org.jboss.spec.javax.json</groupId>
-<artifactId>jboss-json-api_1.0_spec</artifactId>
+    <groupId>org.jboss.spec.javax.json</groupId>
+    <artifactId>jboss-json-api_1.0_spec</artifactId>
 </dependency>
 
    </dependencies>

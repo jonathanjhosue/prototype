@@ -14,7 +14,7 @@ import com.company.prototype.model.entity.Tarjeta;
 import com.company.prototype.model.entity.TipoCambio;
 import com.company.prototype.model.entity.TipoCambioPK;
 import com.company.prototype.util.EntityUtil;
-import com.company.prototype.util.SimpleCache;
+//import com.company.prototype.util.SimpleCache;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -34,8 +34,8 @@ public class TipoCambioFacade extends AbstractFacade<TipoCambio> {
     @PersistenceContext(unitName = "prototypeUnit")
     private EntityManager em;
     
-    @Resource(lookup="java:jboss/infinispan/container/prototypeCache")
-    private CacheContainer container; 
+    //@Resource(lookup="java:jboss/infinispan/container/prototypeCache")
+    //private CacheContainer container; 
     
     final String idSeparator="||";
     private final String cacheName="cacheCurrentExchange";    
@@ -54,7 +54,7 @@ public class TipoCambioFacade extends AbstractFacade<TipoCambio> {
     @PostConstruct  
     public void initCache() {
 
-    	cache=container.getCache(cacheName);
+    	//cache=container.getCache(cacheName);
 
 
    	}
